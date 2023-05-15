@@ -1,8 +1,31 @@
 <tape_info>
+  <name>test</name>
   <start_time>2454822.5698634</start_time>
   <last_block_time>2454822.5698634</last_block_time>
-  <last_block_done>6208</last_block_done>
+  <last_block_done>6280</last_block_done>
   <missed>0</missed>
   <tape_quality>0</tape_quality>
   <beam>8</beam>
 </tape_info>
+<data_desc>
+  <start_ra>3.2887318938763</start_ra>
+  <start_dec>23.410418247457</start_dec>
+  <end_ra>3.3185884614727</end_ra>
+  <end_dec>26.095076667942</end_dec>
+  <true_angle_range>2.7152905955851</true_angle_range>
+  <time_recorded>Mon Dec 22 01:40:36 2008</time_recorded>
+  <time_recorded_jd>2454822.5698622</time_recorded_jd>
+  <nsamples>1048576</nsamples>
+  <coords>
+  <coordinate_t>
+    <time>2454822.5698622</time>
+    <ra>3.2887318938763</ra>
+    <dec>23.410418247457</dec>
+  </coordinate_t>
+  <coordinate_t>
+    <time>2454822.5698622</time>
+    <ra>3.2887318938763</ra>
+    <dec>23.410418247457</dec>
+  </coordinate_t>
+  </coords>
+</data_desc>

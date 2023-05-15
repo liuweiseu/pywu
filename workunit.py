@@ -1,3 +1,6 @@
+"""
+class: xml
+"""
 class xml(object):
     nindent = 0
     def __init__(self,f,name):
@@ -13,56 +16,84 @@ class xml(object):
         self.print_xml_indent()
         print("</%s>"%(name), file=self.f)
     
-    def print_xml_content(self,name, content):
-        self.print_xml_indent()
-        print("<%s>%s</%s>"%(name, content, name), file=self.f)
+    def print_xml_content(self, c):
+        for k in c:
+            v = c[k]
+            if(isinstance(v,list)):
+                self.print_xml_begin(k)
+                for i in v:
+                    i.print_xml()
+                self.print_xml_end(k)
+            elif(isinstance(v,xml)):
+                self.print_xml_begin(k)
+                v.print_xml()
+                self.print_xml_end(k)
+            else:
+                self.print_xml_indent()
+                print("<%s>%s</%s>"%(k, v, k), file=self.f)
 
     def print_xml_indent(self):
         print(' '*xml.nindent, file=self.f, end='')
 
+    def print_xml(self):
+        self.print_xml_begin(self.name)
+        xml.nindent += 2
+        self.print_xml_content(self.info)
+        xml.nindent -= 2
+        self.print_xml_end(self.name)
+
+
+"""
+class tape
+"""
+tape_info = {'name'             : '', \
+             'start_time'       : '', \
+             'last_block_time'  : '', \
+             'last_block_done'  : '', \
+             'missed'           : '', \
+             'tape_quality'     : '', \
+             'beam'             : ''}
 class tape(xml):
-    def __init__(self, f, name, start_time, \
-                 last_block_time, last_block_done, \
-                 missed, tape_quality, beam):
+    def __init__(self, f, name, tape_info):
         self.f = f
         self.name = name
-        self.start_time = start_time
-        self.last_block_time = last_block_time
-        self.last_block_done = last_block_done
-        self.missed = missed
-        self.tape_quality = tape_quality
-        self.beam = beam
-    
-    def print_xml(self):
-        self.print_xml_begin('tape_info')
-        xml.nindent += 2
-        self.print_xml_content('start_time',str(self.start_time))
-        self.print_xml_content('last_block_time',str(self.last_block_time))
-        self.print_xml_content('last_block_done',str(self.last_block_done))
-        self.print_xml_content('missed', self.missed)
-        self.print_xml_content('tape_quality', self.tape_quality)
-        self.print_xml_content('beam', self.beam)
-        xml.nindent -= 2
-        self.print_xml_end('tape_info')
+        self.info = tape_info
 
- 
+"""
+class data_description
+""" 
+data_desc = {'start_ra'         : '', \
+             'start_dec'        : '', \
+             'end_ra'           : '', \
+             'end_dec'          : '', \
+             'true_angle_range' : '', \
+             'time_recorded'    : '', \
+             'time_recorded_jd' : '', \
+             'nsamples'         : '', \
+             'coords'           : ''}
 class data_description(xml):
-    def __init__(self, f, start_ra, start_dec, \
-                          end_ra, end_dec, \
-                          true_angle_range, \
-                          time_recorded, \
-                          time_recorded_jd, \
-                          nsamples, \
-                          coords):
-        self.start_ra = start_ra
-        self.start_dec = start_dec
-        self.true_angle_range = true_angle_range
-        self.time_recorded = time_recorded
-        self.time_recorded_jd = time_recorded_jd
-        self.nsamples = nsamples
-        self.coords = coords
-    
-    def print_xml(self):
-        self.print_xml_begin('data_desc')
-        xml.nindent += 2
-        
+    def __init__(self, f, name, data_desc):
+        self.f =f
+        self.name = name
+        self.info = data_desc
+
+"""
+class coordinate
+"""
+coordinate_t = {'time'          : '', \
+                'ra'            : '', \
+                'dec'           : ''}
+class coordinate(xml):
+    def __init__(self, f, name, coordinate_t):
+        self.f = f
+        self.name = name
+        self.info = coordinate_t
+
+"""
+class receiver_cfg
+"""
+class receiver(xml):
+    def __init__(self, f, name, receiver_cfg):
+        self.f = f
+        self.name = name
+        self.info = receiver_cfg
