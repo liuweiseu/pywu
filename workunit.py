@@ -26,9 +26,9 @@ class xml(object):
                 self.print_xml_end(k)
             elif(isinstance(v,dict)):
                 ins = xml(k,v)
-                #self.print_xml_begin(k)
                 ins.print_xml(self.f)
-                #self.print_xml_end(k)
+            elif(isinstance(v,xml)):
+                v.print_xml(self.f)
             else:
                 self.print_xml_indent()
                 print("<%s>%s</%s>"%(k, v, k), file=self.f)
@@ -45,6 +45,25 @@ class xml(object):
         self.print_xml_end(self.name)
 
 
+class xml_coeff(xml):
+    def __init__(self, name, info):
+        super(xml_coeff, self).__init__(name, info)
+
+    def print_xml_begin(self, name):
+        self.print_xml_indent()
+        print("<%s "%(name),file=self.f, end='')
+        for k in self.info:
+            if k == 'values':
+                break
+            v = self.info[k]
+            print("%s=%s "%(k,v),file=self.f, end='')
+        print(">", file=self.f)
+    def print_xml_content(self, c):
+        self.print_xml_indent()
+        for v in c['values'][:-1]:
+            print("%s,"%(v), file=self.f, end='')
+        print(c['values'][-1], file=self.f)
+        
 """
 tape example
 """
@@ -85,6 +104,22 @@ data_desc =  {
 }
 
 """
+corr_coeff example
+"""
+az_corr_coeff = {
+    'length'        : 99, \
+    'encoding'      : "\"x-csv\"",\
+    'values'        : [-37,-6.05,92.35,-731.21]
+}
+az_corr_coeff_ins = xml_coeff('az_corr_coeff', az_corr_coeff)
+
+zen_corr_coeff = {
+    'length'        : 99, \
+    'encoding'      : "\"x-csv\"",\
+    'values'        : [-37,-6.05,92.35,-731.21]
+}
+zen_corr_coeff_ins = xml_coeff('zen_corr_coeff', zen_corr_coeff)
+"""
 receiver example
 """
 receiver_cfg = {
@@ -97,8 +132,8 @@ receiver_cfg = {
     'elevation'     : 497, \
     'diameter'      : 168, \
     'az_orientation': 180, \
-    'az_corr_coeff' : -37, \
-    'zen_corr_coeff': -57, \
+    'az_corr_coeff' : az_corr_coeff_ins, \
+    'zen_corr_coeff': zen_corr_coeff_ins, \
     'array_az_ellipse' : 329.06, \
     'array_za_ellipse' : 384.005, \
     'array_angle'   : -60

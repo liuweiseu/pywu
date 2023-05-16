@@ -43,8 +43,12 @@
       <elevation>497</elevation>
       <diameter>168</diameter>
       <az_orientation>180</az_orientation>
-      <az_corr_coeff>-37</az_corr_coeff>
-      <zen_corr_coeff>-57</zen_corr_coeff>
+      <az_corr_coeff length=99 encoding="x-csv" >
+        -37,-6.05,92.35,-731.21
+      </az_corr_coeff>
+      <zen_corr_coeff length=99 encoding="x-csv" >
+        -37,-6.05,92.35,-731.21
+      </zen_corr_coeff>
       <array_az_ellipse>329.06</array_az_ellipse>
       <array_za_ellipse>384.005</array_za_ellipse>
       <array_angle>-60</array_angle>
