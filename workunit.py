@@ -105,6 +105,72 @@ receiver_cfg = {
     'array_angle'   : -60
 }
 
+"""
+recorder example
+"""
+recorder_cfg = {
+    'name'          : '', \
+    'bits_per_sample': 2, \
+    'sample_rate'   : 2500000, \
+    'beams'         : 14, \
+    'version'       : 1.99000001
+}
+
+"""
+splitter example
+"""
+splitter_cfg = {
+    'version'       : 0.200003, \
+    'data_type'     : 'encoded',\
+    'fft_len'       : 2048, \
+    'ifft_len'      : 8, \
+    'filter'        : 'fft', \
+    'window'        : 'welsh', \
+    'sammples_per_wu': 1048576, \
+    'highpass'      : 0, \
+    'blanker_filter': 'randomize'
+}
+
+"""
+chirp example
+"""
+chirp_parameter = {
+    'chirp_limit'   : 30, \
+    'fft_len_flags' : 262136
+}
+chirp_parameter_t = xml('chirp_parameter_t', chirp_parameter)
+"""
+analysis example
+"""
+analysis_cfg = {
+    'spike_thresh'                  : 24, \
+    'spikes_per_spectrum'           : 1,\
+    'gauss_null_chi_sq_thresh'      : 2.15593648,\
+    'gauss_chi_sq_thresh'           : 1.41999996,\
+    'gauss_power_thresh'            : 3,\
+    'gauss_peak_power_thresh'       : 3.20000005,\
+    'gauss_pot_length'              : 64,\
+    'pulse_thresh'                  : 18.2443752,\
+    'pulse_display_thresh'          : 0.5,\
+    'pulse_max'                     : 40960,\
+    'pulse_min'                     : 16,\
+    'pulse_fft_max'                 : 8192,\
+    'pulse_pot_length'              : 256,\
+    'triplet_thresh'                : 7.2444005,\
+    'triplet_max'                   : 131072,\
+    'triplet_min'                   : 16,\
+    'triplet_pot_length'            : 256,\
+    'pot_overlap_factor'            : 0.5,\
+    'pot_t_offset'                  : 1,\
+    'pot_min_slew'                  : 0.00209999993,\
+    'pot_max_slew'                  : 0.0104999999,\
+    'chirp_resolution'              : 0.333,\
+    'analysis_fft_lengths'          : 262136,\
+    'bsmooth_boxcar_length'         : 8192,\
+    'bsmooth_chunk_size'            : 32768,\
+    'chirps'                        : [chirp_parameter_t, chirp_parameter_t]
+
+}
 
 """
 group_info example
