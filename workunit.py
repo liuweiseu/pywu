@@ -22,14 +22,13 @@ class xml(object):
             if(isinstance(v,list)):
                 self.print_xml_begin(k)
                 for i in v:
-                    #ins = xml(k,v)
                     i.print_xml(self.f)
                 self.print_xml_end(k)
             elif(isinstance(v,dict)):
                 ins = xml(k,v)
-                self.print_xml_begin(k)
+                #self.print_xml_begin(k)
                 ins.print_xml(self.f)
-                self.print_xml_end(k)
+                #self.print_xml_end(k)
             else:
                 self.print_xml_indent()
                 print("<%s>%s</%s>"%(k, v, k), file=self.f)
@@ -168,22 +167,45 @@ analysis_cfg = {
     'analysis_fft_lengths'          : 262136,\
     'bsmooth_boxcar_length'         : 8192,\
     'bsmooth_chunk_size'            : 32768,\
-    'chirps'                        : [chirp_parameter_t, chirp_parameter_t]
-
+    'chirps'                        : [chirp_parameter_t, chirp_parameter_t],
+    'pulse_beams'                   : 1, \
+    'max_signals'                   : 30, \
+    'max_spikes'                    : 8, \
+    'max_gaussians'                 : 0, \
+    'max_pulses'                    : 0, \
+    'max_triplets'                  : 0, \
+    'keyuniq'                       : 7344400, \
+    'credit_rate'                   : 2.8499999
 }
 
+"""
+subband example
+"""
+subband_desc = {
+    'number'        : 49,
+    'center'        : 1420482788.0859,
+    'base'          : 1420478515.625,
+    'sample_rate'   : 9765.625
+}
 """
 group_info example
 """
 group_info = {
     'tape_info'     : tape_info, \
     'name'          : '', \
-    'data_desc'     : data_desc
+    'data_desc'     : data_desc, \
+    'receiver_cfg'  : receiver_cfg, \
+    'recorder_cfg'  : recorder_cfg, \
+    'splitter_cfg'  : splitter_cfg, \
+    'analysis_cfg'  : analysis_cfg, \
+    'sb_id'         : 0
 }
 """
 workunit_header example
 """
 workunit_header = {
-    'name' : '', \
-    'group_info' : group_info
+    'name'          : '', \
+    'group_info'    : group_info, \
+    'subband_desc'  : subband_desc, \
+    'sd_id'         : 0
 }
