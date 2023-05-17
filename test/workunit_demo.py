@@ -2,7 +2,7 @@
 
 import sys, os
 
-sys.path.insert(0, './')
+sys.path.insert(0, '../pywu/')
 
 from workunit import xml, xml_data
 from workunit import tape_info
