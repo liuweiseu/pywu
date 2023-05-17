@@ -64,7 +64,6 @@ class redis_info(object):
             if(abs(md['TimeStamp'] - t)<=0.5):
                 break
             offset += 1
-        print(offset)
         cood = []
         for i in range(l):
             time = self.metadata[i+offset]['TimeStamp']

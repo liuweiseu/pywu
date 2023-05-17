@@ -4,22 +4,22 @@ import sys, os
 
 sys.path.insert(0, '../pywu/')
 
-from workunit import xml, xml_data
-from workunit import tape_info
-from workunit import data_desc
-from workunit import coordinate_t
-from workunit import az_corr_coeff
-from workunit import zen_corr_coeff
-from workunit import receiver_cfg
-from workunit import recorder_cfg
-from workunit import splitter_cfg
-from workunit import chirp_parameter
-from workunit import analysis_cfg
-from workunit import subband_desc
-from workunit import group_info
-from workunit import workunit_header
-from workunit import data
-from workunit import workunit_grp
+from wu_xml  import xml, xml_data
+from wu_xml  import tape_info
+from wu_xml  import data_desc
+from wu_xml  import coordinate_t
+from wu_xml  import az_corr_coeff
+from wu_xml  import zen_corr_coeff
+from wu_xml  import receiver_cfg
+from wu_xml  import recorder_cfg
+from wu_xml  import splitter_cfg
+from wu_xml  import chirp_parameter
+from wu_xml  import analysis_cfg
+from wu_xml  import subband_desc
+from wu_xml  import group_info
+from wu_xml  import workunit_header
+from wu_xml  import data
+from wu_xml  import workunit_grp
 
 if __name__ == '__main__':
     # create a workunit file

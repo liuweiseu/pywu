@@ -4,7 +4,7 @@ import os, sys
 
 sys.path.insert(0, '../pywu/')
 
-from data_parse import dfile,redis_info
+from wu_io import dfile,redis_info
 
 def main():
     r = redis_info('../data_example/redis_info_20230511.json')
