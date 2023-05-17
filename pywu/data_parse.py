@@ -21,7 +21,6 @@ info = {
 
 class dfile(object):
     def __init__(self, filename):
-        print(filename)
         self.filename = filename
         self.info = info
         try:
@@ -37,7 +36,6 @@ class dfile(object):
             self.info[k] = fnstr[i]
             i += 1
         datetime_str = self.info['date'] + self.info['time']
-        print(datetime_str)
         self.info['datetime'] = datetime.datetime.strptime(datetime_str, '%Y%m%d%H%M%S')
         self.info['timestamp'] = self.info['datetime'].timestamp() + int(self.info['nanosec'])/10**9
     
@@ -53,3 +51,22 @@ class redis_info(object):
         self.filename = filename
         with open(self.filename) as f:
             self.metadata = json.load(f)
+        for md in self.metadata:
+            md['TimeStamp'] = float(md['TimeStamp'])/1000.0
+    
+    def seekcood(self, b, t, l):
+        start = self.metadata[0]['TimeStamp']
+        offset = round(t - start)
+        cood = []
+        for i in range(l):
+            time = self.metadata[i+offset]['TimeStamp']
+            beam = 'SDP_Beam%02d_RA'%(b)
+            ra = self.metadata[i+offset][beam]
+            dec = self.metadata[i+offset][beam]
+            md = {
+                'time'  : time, \
+                'ra'    : ra, \
+                'dec'   : dec
+            }
+            cood.append(md)
+        return md
