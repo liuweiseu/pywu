@@ -54,3 +54,27 @@ class redis_info(object):
         self.filename = filename
         with open(self.filename) as f:
             self.metadata = json.load(f)
+        for md in self.metadata:
+            md['TimeStamp'] = float(md['TimeStamp'])/1000.0
+    
+    def seekcood(self, b, t, l):
+        start = self.metadata[0]['TimeStamp']
+        offset = 0
+        for md in self.metadata:
+            if(abs(md['TimeStamp'] - t)<=0.5):
+                break
+            offset += 1
+        print(offset)
+        cood = []
+        for i in range(l):
+            time = self.metadata[i+offset]['TimeStamp']
+            beam = 'SDP_Beam%02d_RA'%(b)
+            ra = self.metadata[i+offset][beam]
+            dec = self.metadata[i+offset][beam]
+            md = {
+                'time'  : time, \
+                'ra'    : ra, \
+                'dec'   : dec
+            }
+            cood.append(md)
+        return cood
