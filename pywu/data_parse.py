@@ -1,6 +1,9 @@
 import json
 import numpy as np
-import datetime
+from datetime import datetime, timezone, timedelta
+
+# We use beijing time, so we need to convert it to UTC time
+UTC_OFFSET = 8
 
 FRAME_SIZE = 256 * 2
 FS = 1000 * 10**6
@@ -21,7 +24,6 @@ info = {
 
 class dfile(object):
     def __init__(self, filename):
-        print(filename)
         self.filename = filename
         self.info = info
         try:
@@ -31,14 +33,13 @@ class dfile(object):
         self.data = 0
         # parse the file name
         fnstr = self.filename.split('/')[-1].strip('.dat').split('_')
-        print(fnstr)
         i = 0
         for k in self.info:
             self.info[k] = fnstr[i]
             i += 1
         datetime_str = self.info['date'] + self.info['time']
-        print(datetime_str)
-        self.info['datetime'] = datetime.datetime.strptime(datetime_str, '%Y%m%d%H%M%S')
+        tz = timezone(timedelta(hours=UTC_OFFSET))
+        self.info['datetime'] = datetime.strptime(datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=tz)
         self.info['timestamp'] = self.info['datetime'].timestamp() + int(self.info['nanosec'])/10**9
     
     def dread(self, nsec=-1, skip=0):

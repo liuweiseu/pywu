@@ -11,6 +11,7 @@ def main():
     print(r.metadata[0]['TimeStamp'])
     f = dfile('../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat')
     print(f.info)
+    f.see
 
 if __name__ == '__main__':
     main()
