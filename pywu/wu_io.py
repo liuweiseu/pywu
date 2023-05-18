@@ -1,6 +1,7 @@
 import json
 import numpy as np
 from datetime import datetime, timezone, timedelta
+import astropy
 
 # We use beijing time, so we need to convert it to UTC time
 UTC_OFFSET = 8
@@ -41,7 +42,10 @@ class dfile(object):
         tz = timezone(timedelta(hours=UTC_OFFSET))
         self.info['datetime'] = datetime.strptime(datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=tz)
         self.info['timestamp'] = self.info['datetime'].timestamp() + int(self.info['nanosec'])/10**9
-    
+        self.info['time_recorded'] = datetime.strftime(self.info['datetime'],"%a %b %d %H:%M:%S %Y")
+        t = astropy.time.Time(self.info['datetime'])
+        self.info['time_recorded_jd'] = t.jd
+
     def dread(self, nsec=-1, skip=0):
         dtype = np.dtype('i')
         start = skip * FRAME_SIZE
@@ -71,9 +75,10 @@ class redis_info(object):
             ra = self.metadata[i+offset][beam]
             dec = self.metadata[i+offset][beam]
             md = {
+                'class' : 'xml_base', \
                 'time'  : time, \
                 'ra'    : ra, \
                 'dec'   : dec
             }
             cood.append(md)
-        return cood
+        return np.array(cood)

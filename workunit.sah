@@ -22,36 +22,34 @@
         <time_recorded_jd>2454822.5698622</time_recorded_jd>
         <nsamples>1048576</nsamples>
         <coords>
-        <coordinate_t>
           <time>1683795370.0</time>
           <ra>8.272214</ra>
           <dec>8.272214</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>1683795371.0</time>
           <ra>8.272506</ra>
           <dec>8.272506</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>1683795372.0</time>
           <ra>8.272781</ra>
           <dec>8.272781</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>1683795373.2</time>
           <ra>8.273119</ra>
           <dec>8.273119</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>1683795374.2</time>
           <ra>8.273397</ra>
           <dec>8.273397</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>1683795375.2</time>
           <ra>8.273667</ra>
           <dec>8.273667</dec>
-        </coordinate_t>
         </coords>
       </data_desc>
       <receiver_cfg>
@@ -134,5 +132,7 @@
     </subband_desc>
     <sd_id>0</sd_id>
   </workunit_header>
-  <data></data>
+  <data class=xml_coeff length=354991 encoding="x-setiathome" >
+    -37,-6.05,92.35,-731.21
+  </data>
 </workunit_group>

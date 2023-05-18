@@ -1,10 +1,14 @@
 #! /usr/bin/env python
-
+"""
+This is used for testing wu_xml
+"""
 import sys, os
+import numpy as np
 
 sys.path.insert(0, '../pywu/')
 
-from wu_xml  import xml, xml_data
+from util    import add_to_list
+from wu_xml  import xml_base, xml_coeff
 from wu_xml  import tape_info
 from wu_xml  import data_desc
 from wu_xml  import coordinate_t
@@ -25,22 +29,23 @@ if __name__ == '__main__':
     # create a workunit file
     f = open('workunit_template.sah','w')
     # create coordinate_ins
-    coordinate_ins = xml('coordinate_t', coordinate_t)
-    data_desc['coords'] = [coordinate_ins , coordinate_ins]
+    coordinate_arr = []
+    coordinate_arr = add_to_list(coordinate_arr, coordinate_t)
+    coordinate_arr = add_to_list(coordinate_arr, coordinate_t)
+    coordinate_arr = add_to_list(coordinate_arr, [coordinate_t, coordinate_t])
+    data_desc['coords'] = coordinate_arr
     # create corr coeff
-    az_corr_coeff_ins = xml_data('az_corr_coeff', az_corr_coeff)
-    zen_corr_coeff_ins = xml_data('zen_corr_coeff', zen_corr_coeff)
-    receiver_cfg['az_corr_coeff'] = az_corr_coeff_ins
-    receiver_cfg['zen_corr_coeff_ins'] = zen_corr_coeff_ins
+    az_corr_coeff_arr = []
+    az_corr_coeff_arr = add_to_list(az_corr_coeff_arr, az_corr_coeff)
+    zen_corr_coeff_arr = []
+    zen_corr_coeff_arr = add_to_list(zen_corr_coeff_arr, zen_corr_coeff)
+    receiver_cfg['az_corr_coeff'] = az_corr_coeff_arr
+    receiver_cfg['zen_corr_coeff'] = zen_corr_coeff_arr
     # create chirp_parameter
-    chirp_parameter_ins = xml('chirp_parameter_t', chirp_parameter)
-    analysis_cfg['chirps'] = [chirp_parameter_ins, chirp_parameter_ins]
-    # create workunit header
-    workunit_header_ins = xml('workunit_header', workunit_header)
-    workunit_grp['workunit_header'] = workunit_header_ins
-    # create data
-    data_ins = xml_data('data', data)
-    workunit_grp['data'] = data_ins
-    workunit_grp_ins = xml('workunit_grp', workunit_grp)
+    chirp_parameter_arr = []
+    chirp_parameter_arr = add_to_list(chirp_parameter_arr, [chirp_parameter, chirp_parameter])
+    analysis_cfg['chirps'] = chirp_parameter_arr
+    # create workunit group
+    workunit_grp_ins = xml_base('workunit_grp', workunit_grp)
     workunit_grp_ins.print_xml(f)
     f.close()

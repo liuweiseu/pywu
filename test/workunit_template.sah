@@ -22,16 +22,24 @@
         <time_recorded_jd>2454822.5698622</time_recorded_jd>
         <nsamples>1048576</nsamples>
         <coords>
-        <coordinate_t>
           <time>2454822.5698622</time>
           <ra>3.2887318938763</ra>
           <dec>23.410418247457</dec>
-        </coordinate_t>
-        <coordinate_t>
+        </coords>
+        <coords>
           <time>2454822.5698622</time>
           <ra>3.2887318938763</ra>
           <dec>23.410418247457</dec>
-        </coordinate_t>
+        </coords>
+        <coords>
+          <time>2454822.5698622</time>
+          <ra>3.2887318938763</ra>
+          <dec>23.410418247457</dec>
+        </coords>
+        <coords>
+          <time>2454822.5698622</time>
+          <ra>3.2887318938763</ra>
+          <dec>23.410418247457</dec>
         </coords>
       </data_desc>
       <receiver_cfg>
@@ -44,16 +52,15 @@
         <elevation>497</elevation>
         <diameter>168</diameter>
         <az_orientation>180</az_orientation>
-        <az_corr_coeff length=99 encoding="x-csv" >
+        <az_corr_coeff class=xml_coeff length=99 encoding="x-csv" >
           -37,-6.05,92.35,-731.21
         </az_corr_coeff>
-        <zen_corr_coeff></zen_corr_coeff>
+        <zen_corr_coeff class=xml_coeff length=99 encoding="x-csv" >
+          -37,-6.05,92.35,-731.21
+        </zen_corr_coeff>
         <array_az_ellipse>329.06</array_az_ellipse>
         <array_za_ellipse>384.005</array_za_ellipse>
         <array_angle>-60</array_angle>
-        <zen_corr_coeff length=99 encoding="x-csv" >
-          -37,-6.05,92.35,-731.21
-        </zen_corr_coeff>
       </receiver_cfg>
       <recorder_cfg>
         <name></name>
@@ -100,14 +107,12 @@
         <bsmooth_boxcar_length>8192</bsmooth_boxcar_length>
         <bsmooth_chunk_size>32768</bsmooth_chunk_size>
         <chirps>
-        <chirp_parameter_t>
           <chirp_limit>30</chirp_limit>
           <fft_len_flags>262136</fft_len_flags>
-        </chirp_parameter_t>
-        <chirp_parameter_t>
+        </chirps>
+        <chirps>
           <chirp_limit>30</chirp_limit>
           <fft_len_flags>262136</fft_len_flags>
-        </chirp_parameter_t>
         </chirps>
         <pulse_beams>1</pulse_beams>
         <max_signals>30</max_signals>
@@ -128,7 +133,7 @@
     </subband_desc>
     <sd_id>0</sd_id>
   </workunit_header>
-  <data length=354991 encoding="x-setiathome" >
+  <data class=xml_coeff length=354991 encoding="x-setiathome" >
     -37,-6.05,92.35,-731.21
   </data>
 </workunit_grp>

@@ -1,7 +1,14 @@
 """
-class: xml
+Note:   1. The wu_xml is based on a dict structure.
+        2. The dict can be nested, which means a dict can be a part of another big dict.
+        3. If you want a list of dict to be a part of another big dict, 
+           you have to use util/add_to_list() to create the list
 """
-class xml(object):
+import numpy as np
+"""
+class: xml_base
+"""
+class xml_base(object):
     nindent = 0
     def __init__(self,name, info):
         self.f = 0
@@ -18,36 +25,35 @@ class xml(object):
     
     def print_xml_content(self, c):
         for k in c:
+            if(k == 'class'):
+                continue
             v = c[k]
-            if(isinstance(v,list)):
-                self.print_xml_begin(k)
+            if(isinstance(v,np.ndarray)):
                 for i in v:
-                    i.print_xml(self.f)
-                self.print_xml_end(k)
+                    ins = eval(i['class'])(k,i)
+                    ins.print_xml(self.f)
             elif(isinstance(v,dict)):
-                ins = xml(k,v)
+                ins = eval(v['class'])(k,v)
                 ins.print_xml(self.f)
-            elif(isinstance(v,xml)):
-                v.print_xml(self.f)
             else:
                 self.print_xml_indent()
                 print("<%s>%s</%s>"%(k, v, k), file=self.f)
 
     def print_xml_indent(self):
-        print(' '*xml.nindent, file=self.f, end='')
+        print(' '*xml_base.nindent, file=self.f, end='')
 
     def print_xml(self,f):
         self.f = f
         self.print_xml_begin(self.name)
-        xml.nindent += 2
+        xml_base.nindent += 2
         self.print_xml_content(self.info)
-        xml.nindent -= 2
+        xml_base.nindent -= 2
         self.print_xml_end(self.name)
 
 
-class xml_data(xml):
+class xml_coeff(xml_base):
     def __init__(self, name, info):
-        super(xml_data, self).__init__(name, info)
+        super(xml_coeff, self).__init__(name, info)
 
     def print_xml_begin(self, name):
         self.print_xml_indent()
@@ -68,6 +74,7 @@ class xml_data(xml):
 tape example
 """
 tape_info = {
+    'class'            : 'xml_base', \
     'name'             : 'test', \
     'start_time'       : 2454822.5698634, \
     'last_block_time'  : 2454822.5698634, \
@@ -82,6 +89,7 @@ tape_info = {
 coordinate example
 """
 coordinate_t = {
+    'class'         : 'xml_base', \
     'time'          : 2454822.5698622, \
     'ra'            : 3.2887318938763, \
     'dec'           : 23.410418247457
@@ -91,6 +99,7 @@ coordinate_t = {
 data_description example
 """ 
 data_desc =  {
+    'class'             : 'xml_base', \
     'start_ra'          : 3.2887318938763, \
     'start_dec'         : 23.410418247457, \
     'end_ra'            : 3.3185884614727, \
@@ -106,12 +115,14 @@ data_desc =  {
 corr_coeff example
 """
 az_corr_coeff = {
+    'class'         : 'xml_coeff', \
     'length'        : 99, \
     'encoding'      : "\"x-csv\"",\
     'values'        : [-37,-6.05,92.35,-731.21]
 }
 
 zen_corr_coeff = {
+    'class'         : 'xml_coeff', \
     'length'        : 99, \
     'encoding'      : "\"x-csv\"",\
     'values'        : [-37,-6.05,92.35,-731.21]
@@ -120,6 +131,7 @@ zen_corr_coeff = {
 receiver example
 """
 receiver_cfg = {
+    'class'         : 'xml_base', \
     's4_id'         : 11, \
     'name'          : 'Arecibo 1.4GHz Array, Beam 4, Pol 0', \
     'beam_width'    : 0.0500000007, \
@@ -128,35 +140,37 @@ receiver_cfg = {
     'longitude'     : -66.7552222, \
     'elevation'     : 497, \
     'diameter'      : 168, \
-    'az_orientation': 180, \
+    'az_orientation': 0, \
     'az_corr_coeff' : '', \
     'zen_corr_coeff': '', \
-    'array_az_ellipse' : 329.06, \
-    'array_za_ellipse' : 384.005, \
-    'array_angle'   : -60
+    'array_az_ellipse' : 0, \
+    'array_za_ellipse' : 0, \
+    'array_angle'   : 0
 }
 
 """
 recorder example
 """
 recorder_cfg = {
-    'name'          : '', \
-    'bits_per_sample': 2, \
-    'sample_rate'   : 2500000, \
-    'beams'         : 14, \
-    'version'       : 1.99000001
+    'class'         : 'xml_base', \
+    'name'          : 'serendip6_reobs_FAST', \
+    'bits_per_sample': 16, \
+    'sample_rate'   : 15258.7890625, \
+    'beams'         : 38, \
+    'version'       : 2.000001
 }
 
 """
 splitter example
 """
 splitter_cfg = {
-    'version'       : 0.200003, \
-    'data_type'     : 'encoded',\
-    'fft_len'       : 2048, \
-    'ifft_len'      : 8, \
-    'filter'        : 'fft', \
-    'window'        : 'welsh', \
+    'class'         : 'xml_base', \
+    'version'       : 0.2123456, \
+    'data_type'     : 'binary',\
+    'fft_len'       : 256, \
+    'ifft_len'      : 1, \
+    'filter'        : 'pfb', \
+    'window'        : 'hanning', \
     'sammples_per_wu': 1048576, \
     'highpass'      : 0, \
     'blanker_filter': 'randomize'
@@ -166,6 +180,7 @@ splitter_cfg = {
 chirp example
 """
 chirp_parameter = {
+    'class'         : 'xml_base', \
     'chirp_limit'   : 30, \
     'fft_len_flags' : 262136
 }
@@ -174,6 +189,7 @@ chirp_parameter = {
 analysis example
 """
 analysis_cfg = {
+    'class'                         : 'xml_base', \
     'spike_thresh'                  : 24, \
     'spikes_per_spectrum'           : 1,\
     'gauss_null_chi_sq_thresh'      : 2.15593648,\
@@ -214,6 +230,7 @@ analysis_cfg = {
 subband example
 """
 subband_desc = {
+    'class'         : 'xml_base', \
     'number'        : 49,
     'center'        : 1420482788.0859,
     'base'          : 1420478515.625,
@@ -223,6 +240,7 @@ subband_desc = {
 group_info example
 """
 group_info = {
+    'class'         : 'xml_base', \
     'tape_info'     : tape_info, \
     'name'          : '', \
     'data_desc'     : data_desc, \
@@ -236,6 +254,7 @@ group_info = {
 workunit_header example
 """
 workunit_header = {
+    'class'         : 'xml_base', \
     'name'          : '', \
     'group_info'    : group_info, \
     'subband_desc'  : subband_desc, \
@@ -246,6 +265,7 @@ workunit_header = {
 data example
 """
 data = {
+    'class'         : 'xml_coeff', \
     'length'        : 354991, \
     'encoding'      : "\"x-setiathome\"",\
     'values'        : [-37,-6.05,92.35,-731.21]
@@ -253,6 +273,7 @@ data = {
 
 
 workunit_grp = {
-    'workunit_header' : '', \
-    'data'            : ''
+    'class'           : 'xml_base', \
+    'workunit_header' : workunit_header, \
+    'data'            : data
 }
