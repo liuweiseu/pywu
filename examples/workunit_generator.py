@@ -17,15 +17,14 @@ def main():
     # seek coord from redis, and read data from the data file
     # we only get 2 seconds of data for test
     nsec = 2
-    coord = r.seekcood(beam,t, nsec)
+    coord = r.seekcoord(beam, t, nsec)
     d = f.dread(nsec)
-    # put data into the file
-    pywu.data['values'] = d[0]
-    # generate workunit
-    ch = 2
+    # generate workunit for channel 0
+    ch = 0
     wu = pywu.wu_file('workunit_example.sah')
     wu.init_header(info, coord, ch)
     wu.set_data(d[ch])
+    pywu.tape_info['name'] = 'tape_info_test'
     wu.gen()
 
 if __name__ == '__main__':

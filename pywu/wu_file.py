@@ -1,7 +1,11 @@
+"""
+High-level module for users.
+Most of the user should be able to get a workunit file by only using this module.
+"""
 from .wu_xml import xml_base
 from .wu_dict import *
 
-header={
+wu_header={
 'tape_info'         : dict(), \
 'data_desc'         : dict(), \
 'receiver_cfg'      : dict(), \
@@ -9,52 +13,76 @@ header={
 }
 
 class wu_file(object):
-    def __init__(self, filename, info=workunit_grp, name='workunit_group'):
+    """
+    Description:
+        This is a high-level class for generating a workunit file.
+        User should be able to get a workunit by using this class only.
+    """
+    def __init__(self, filename, info=workunit_grp, tag='workunit_group'):
+        """
+        Description:
+            Create a wu_file object based on the name and info.
+        Inputs:
+            - tag(str): It's the tag name at the begining of the workunit.
+                Default='workunit_group'
+            - info(dict): It's a big dict contains all the info required by a workunit.
+                By default, it uses the dict template in wu_dict.py.
+                Default=workunit_grp
+        """
         self.filename = filename
-        self.wu_xml = xml_base(info=info, name=name)
-    
-    def gen(self):
-        f = open(self.filename, 'w')
-        self.wu_xml.print_xml(f)
-        f.close()
-    
+        self.wu_xml = xml_base(info=info, tag=tag)
+       
     def init_header(self, info, coord, ch):
+        """
+        Description:
+            Change workunit_header based on info, coord and ch.
+        Inputs:
+            - info(dict):
+            - coord(list): 
+            - ch(int): 
+        """
         # tape_info
-        header['tape_info']['beam']               = info['beam'] * 2 + info['pol']
+        wu_header['tape_info']['beam']               = info['beam'] * 2 + info['pol']
         # data_desc
-        header['data_desc']['start_ra']           = coord[0]['ra']
-        header['data_desc']['start_dec']          = coord[0]['dec']
-        header['data_desc']['end_ra']             = coord[-1]['ra']
-        header['data_desc']['end_dec']            = coord[-1]['dec']
-        header['data_desc']['coord']              = coord
+        wu_header['data_desc']['start_ra']           = coord[0]['ra']
+        wu_header['data_desc']['start_dec']          = coord[0]['dec']
+        wu_header['data_desc']['end_ra']             = coord[-1]['ra']
+        wu_header['data_desc']['end_dec']            = coord[-1]['dec']
+        wu_header['data_desc']['coord']              = coord
         # TODO: calculate true_angle_range
-        header['data_desc']['true_angle_range']   = 0 
-        header['data_desc']['time_recorded']      = info['time_recorded']
-        header['data_desc']['time_recorded_jd']   = info['time_recorded_jd']
+        wu_header['data_desc']['true_angle_range']   = 0 
+        wu_header['data_desc']['time_recorded']      = info['time_recorded']
+        wu_header['data_desc']['time_recorded_jd']   = info['time_recorded_jd']
         # receiver_cfg
         # TODO: check the s4_id with Eric
-        header['receiver_cfg']['s4_id']           = info['beam']
-        header['receiver_cfg']['name']            = "FAST %s MultiBeam, Beam %s, Pol %s"%( \
+        wu_header['receiver_cfg']['s4_id']           = info['beam']
+        wu_header['receiver_cfg']['name']            = "FAST %s MultiBeam, Beam %s, Pol %s"%( \
                                                     info['band'], \
                                                     info['beam'], \
                                                     info['pol'])
         # TODO: ask zhenzhao for the FAST info
-        header['receiver_cfg']['beam_width']      = 0
-        header['receiver_cfg']['center_freq']     = 1250
-        header['receiver_cfg']['latitude']        = 0
-        header['receiver_cfg']['longitude']       = 0
-        header['receiver_cfg']['elevation']       = 0
-        header['receiver_cfg']['diameter']        = 0
-        header['receiver_cfg']['az_orientation']  = 0
+        wu_header['receiver_cfg']['beam_width']      = 0
+        wu_header['receiver_cfg']['center_freq']     = 1250
         # subband_desc
         #TODO: double check the following info
-        header['subband_desc']['number']          = ch
-        header['subband_desc']['center']          = 0
-        header['subband_desc']['base']            = 0
+        wu_header['subband_desc']['number']          = ch
+        wu_header['subband_desc']['center']          = 0
+        wu_header['subband_desc']['base']            = 0
         ### create wu_header
-        for key in header:
-            for subkey in header[key]:
-                eval(key)[subkey] = header[key][subkey] 
+        for key in wu_header:
+            for subkey in wu_header[key]:
+                eval(key)[subkey] = wu_header[key][subkey] 
 
     def set_data(self, d):
+        """
+        Description:
+            Write data into the workunit_group.
+        Inputs:
+            - d(np.ndarray):
+        """
         data['values'] = d
+
+    def gen(self):
+        f = open(self.filename, 'w')
+        self.wu_xml.print_xml(f)
+        f.close()

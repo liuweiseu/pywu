@@ -1,7 +1,15 @@
+"""
+workunit template in dict format.
+"""
 import numpy as np
 
 """
-tape example
+In the wu_dict.py, we have a bit dict, 
+which contains all the info requried by a workunit file.
+"""
+
+"""
+tape template
 """
 tape_info = {
     'class'            : 'xml_base', \
@@ -15,7 +23,7 @@ tape_info = {
  }
 
 """
-coordinate example
+coordinate template
 """
 coordinate_t = {
     'class'         : 'xml_base', \
@@ -25,7 +33,7 @@ coordinate_t = {
 }
 
 """
-data_description example
+data_description template
 """ 
 data_desc =  {
     'class'             : 'xml_base', \
@@ -41,7 +49,7 @@ data_desc =  {
 }
 
 """
-corr_coeff example
+corr_coeff template
 """
 az_corr_coeff = {
     'class'         : 'xml_coeff', \
@@ -57,18 +65,18 @@ zen_corr_coeff = {
     'values'        : [-37,-6.05,92.35,-731.21]
 }
 """
-receiver example
+receiver template
 """
 receiver_cfg = {
     'class'         : 'xml_base', \
     's4_id'         : 11, \
-    'name'          : 'Arecibo 1.4GHz Array, Beam 4, Pol 0', \
+    'name'          : 'FAST 1.05G-1.45G MultiBeam, Beam 0, Pol 0', \
     'beam_width'    : 0.0500000007, \
     'center_freq'   : 1420, \
-    'latitude'      : 18.3538056, \
-    'longitude'     : -66.7552222, \
-    'elevation'     : 497, \
-    'diameter'      : 168, \
+    'latitude'      : 25.652944, \
+    'longitude'     : 106.856667, \
+    'elevation'     : 1110.0288, \
+    'diameter'      : 500, \
     'az_orientation': 0, \
     'az_corr_coeff' : '', \
     'zen_corr_coeff': '', \
@@ -78,7 +86,7 @@ receiver_cfg = {
 }
 
 """
-recorder example
+recorder template
 """
 recorder_cfg = {
     'class'         : 'xml_base', \
@@ -90,7 +98,7 @@ recorder_cfg = {
 }
 
 """
-splitter example
+splitter template
 """
 splitter_cfg = {
     'class'         : 'xml_base', \
@@ -106,7 +114,7 @@ splitter_cfg = {
 }
 
 """
-chirp example
+chirp template
 """
 chirp_parameter = {
     'class'         : 'xml_base', \
@@ -119,7 +127,7 @@ chirp_parameter_1 = {
     'fft_len_flags' : 65528
 }
 """
-analysis example
+analysis template
 """
 analysis_cfg = {
     'class'                         : 'xml_base', \
@@ -161,7 +169,7 @@ analysis_cfg = {
 }
 
 """
-subband example
+subband template
 """
 subband_desc = {
     'class'         : 'xml_base', \
@@ -171,7 +179,7 @@ subband_desc = {
     'sample_rate'   : 15258.7890625
 }
 """
-group_info example
+group_info template
 """
 group_info = {
     'class'         : 'xml_base', \
@@ -185,7 +193,7 @@ group_info = {
     'sb_id'         : 0
 }
 """
-workunit_header example
+workunit_header template
 """
 workunit_header = {
     'class'         : 'xml_base', \
@@ -196,7 +204,7 @@ workunit_header = {
 }
 
 """
-data example
+data template
 """
 data = {
     'class'         : 'xml_data', \
