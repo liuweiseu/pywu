@@ -39,7 +39,7 @@ There are four modules in the package:
 * Here is an example about how to use this package:
     ```python
     import pywu
-    
+
     # open data file
     f = pywu.io.dfile('../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat')
     info = f.info
@@ -59,9 +59,9 @@ There are four modules in the package:
     wu.set_data(d[ch])
     wu.gen()
     ```
-    You can get more detail about the example [here](https://github.com/liuweiseu/pywu/blob/package-dev/examples/workunit_generator.py). 
+    You can get more detail about the example [here](https://github.com/liuweiseu/pywu/blob/master/examples). Please use `./workunit_generator.py -h` to get more information about it.  
 * Modify workunit header   
-The workunit header is generated from a template [here](https://github.com/liuweiseu/pywu/blob/package-dev/pywu/wu_dict.py).  
+The workunit header is generated from a template [here](https://github.com/liuweiseu/pywu/blob/master/pywu/wu_dict.py).  
 Sometimes, you may want to change metadata in workunit header, you can refer the following code to change any metadata you want:
     ```python
     wu.init_header(info, coord, ch)
