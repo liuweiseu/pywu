@@ -1,12 +1,9 @@
 #! /usr/bin/env python
 
-import sys, os
-from datetime import datetime
-import numpy as np
-
 import pywu
 
 def main():
+
     # open data file
     f = pywu.io.dfile('../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat')
     info = f.info
@@ -24,7 +21,6 @@ def main():
     wu = pywu.wu_file('workunit_example.sah')
     wu.init_header(info, coord, ch)
     wu.set_data(d[ch])
-    pywu.tape_info['name'] = 'tape_info_test'
     wu.gen()
 
 if __name__ == '__main__':
