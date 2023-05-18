@@ -4,6 +4,7 @@ Most of the user should be able to get a workunit file by only using this module
 """
 from .wu_xml import xml_base
 from .wu_dict import *
+from .wu_io import FS, FFT_POINT, LO
 
 wu_header={
 'tape_info'         : dict(), \
@@ -38,7 +39,7 @@ class wu_file(object):
             Change workunit_header based on info, coord and ch.
         Inputs:
             - info(dict):
-            - coord(list): 
+            - coord(list or np.ndarray): 
             - ch(int): 
         """
         # tape_info
@@ -54,20 +55,14 @@ class wu_file(object):
         wu_header['data_desc']['time_recorded']      = info['time_recorded']
         wu_header['data_desc']['time_recorded_jd']   = info['time_recorded_jd']
         # receiver_cfg
-        # TODO: check the s4_id with Eric
-        wu_header['receiver_cfg']['s4_id']           = info['beam']
+        wu_header['receiver_cfg']['s4_id']           = 30 + info['beam']*2 + info['pol']
         wu_header['receiver_cfg']['name']            = "FAST %s MultiBeam, Beam %s, Pol %s"%( \
-                                                    info['band'], \
-                                                    info['beam'], \
-                                                    info['pol'])
-        # TODO: ask zhenzhao for the FAST info
-        wu_header['receiver_cfg']['beam_width']      = 0
-        wu_header['receiver_cfg']['center_freq']     = 1250
+                                                        info['band'], info['beam'], info['pol'])
         # subband_desc
-        #TODO: double check the following info
+        ch_center_freq = LO + FS/FFT_POINT*ch
         wu_header['subband_desc']['number']          = ch
-        wu_header['subband_desc']['center']          = 0
-        wu_header['subband_desc']['base']            = 0
+        wu_header['subband_desc']['center']          = ch_center_freq
+        wu_header['subband_desc']['base']            = ch_center_freq
         ### create wu_header
         for key in wu_header:
             for subkey in wu_header[key]:

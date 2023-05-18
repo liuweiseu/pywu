@@ -13,6 +13,8 @@ UTC_OFFSET = 8
 CHANNELS = 256
 # We recorded re and im in byte
 FRAME_SIZE = CHANNELS * 2
+# lo freq
+LO = 1000
 # ADC sampling freq
 FS = 1000 * 10**6
 # FFT points

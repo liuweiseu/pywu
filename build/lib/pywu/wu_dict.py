@@ -69,10 +69,10 @@ receiver template
 """
 receiver_cfg = {
     'class'         : 'xml_base', \
-    's4_id'         : 11, \
+    's4_id'         : 30, \
     'name'          : 'FAST 1.05G-1.45G MultiBeam, Beam 0, Pol 0', \
-    'beam_width'    : 0.0500000007, \
-    'center_freq'   : 1420, \
+    'beam_width'    : 0.0483, \
+    'center_freq'   : 1400, \
     'latitude'      : 25.652944, \
     'longitude'     : 106.856667, \
     'elevation'     : 1110.0288, \
