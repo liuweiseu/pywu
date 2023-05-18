@@ -5,6 +5,7 @@ Note:   1. The wu_xml is based on a dict structure.
            you have to use util/add_to_list() to create the list
 """
 import numpy as np
+import struct
 """
 class: xml_base
 """
@@ -69,7 +70,20 @@ class xml_coeff(xml_base):
         for v in c['values'][:-1]:
             print("%s,"%(v), file=self.f, end='')
         print(c['values'][-1], file=self.f)
-     
+
+class xml_data(xml_coeff):
+    def __init__(self, name, info):
+        super(xml_data, self).__init__(name, info)
+    
+    def print_xml_content(self, c):
+        self.print_xml_indent()
+        if(not isinstance(c['values'], np.ndarray)):
+            c['values'] = np.array(c['values'], dtype=np.int16)
+        l = len(c['values'])
+        d = struct.pack('<%dH'%(l),*c['values'])
+        for v in d:
+            print("%c"%(v), file=self.f, end='')
+        print('',file=self.f)
 """
 tape example
 """
@@ -184,7 +198,11 @@ chirp_parameter = {
     'chirp_limit'   : 30, \
     'fft_len_flags' : 262136
 }
-
+chirp_parameter_1 = {
+    'class'         : 'xml_base', \
+    'chirp_limit'   : 100, \
+    'fft_len_flags' : 65528
+}
 """
 analysis example
 """
@@ -215,7 +233,8 @@ analysis_cfg = {
     'analysis_fft_lengths'          : 262136,\
     'bsmooth_boxcar_length'         : 8192,\
     'bsmooth_chunk_size'            : 32768,\
-    'chirps'                        : '',
+    'chirps'                        : np.array([chirp_parameter, \
+                                                chirp_parameter_1]),
     'pulse_beams'                   : 1, \
     'max_signals'                   : 30, \
     'max_spikes'                    : 8, \
@@ -231,10 +250,10 @@ subband example
 """
 subband_desc = {
     'class'         : 'xml_base', \
-    'number'        : 49,
+    'number'        : '',
     'center'        : 1420482788.0859,
     'base'          : 1420478515.625,
-    'sample_rate'   : 9765.625
+    'sample_rate'   : 15258.7890625
 }
 """
 group_info example
@@ -265,10 +284,10 @@ workunit_header = {
 data example
 """
 data = {
-    'class'         : 'xml_coeff', \
-    'length'        : 354991, \
-    'encoding'      : "\"x-setiathome\"",\
-    'values'        : [-37,-6.05,92.35,-731.21]
+    'class'         : 'xml_data', \
+    'length'        : 2097152, \
+    'encoding'      : "\"binary\"",\
+    'values'        : [48,49,50,-122,64]
 }
 
 

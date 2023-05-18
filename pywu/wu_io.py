@@ -1,15 +1,16 @@
 import json
 import numpy as np
 from datetime import datetime, timezone, timedelta
-import astropy
+import astropy.time
+import math
 
 # We use beijing time, so we need to convert it to UTC time
 UTC_OFFSET = 8
-
-FRAME_SIZE = 256 * 2
+CHANNELS = 256
+FRAME_SIZE = CHANNELS * 2
 FS = 1000 * 10**6
 FFT_POINT = 65536
-FRAME_SIZE_PER_SEC = FS/FFT_POINT*FRAME_SIZE
+FRAME_SIZE_PER_SEC = math.floor(FS/FFT_POINT)*FRAME_SIZE
 
 info = {
     'sw'        : '', \
@@ -28,7 +29,7 @@ class dfile(object):
         self.filename = filename
         self.info = info
         try:
-            self.fp = open(self.filename, 'r')
+            self.fp = open(self.filename, 'rb')
         except:
             raise Exception('File does not exist!')
         self.data = 0
@@ -47,11 +48,32 @@ class dfile(object):
         self.info['time_recorded_jd'] = t.jd
 
     def dread(self, nsec=-1, skip=0):
-        dtype = np.dtype('i')
+        """
+        Description:
+            read data from data file
+        Inputs:
+            - nsec(int):
+
+            - skip(int):
+
+        Output:
+            - d(np.ndarray):
+                returns nsec seconds of data in 256 channels.
+                d[0] is the first channel of data,
+                d[1] is the second channel of data,
+                ...
+                d[255] is the last channel of data.
+        """
+        # little-endian integer-16
+        dtype = np.dtype('<u2')
         start = skip * FRAME_SIZE
-        self.f.seek(start,1)
+        self.fp.seek(start,1)
         nbytes = nsec * FRAME_SIZE_PER_SEC
-        self.data = np.frombuffer(self.fp.read(nbytes), dtype=dtype)
+        d = np.frombuffer(self.fp.read(nbytes), dtype=dtype)
+        d.shape = (-1,CHANNELS)
+        return d.transpose()
+    
+
 
 class redis_info(object):
     def __init__(self, filename):
