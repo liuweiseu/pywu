@@ -1,24 +1,40 @@
 #! /usr/bin/env python
 
+from argparse import ArgumentParser
 import pywu
 
 def main():
+    # get parameters
+    parser = ArgumentParser(description="Usage for setiathome workunit generation.")
+    parser.add_argument('--file','-f',type=str, dest='dfile', \
+                        default='../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat', \
+                        help='raw PFB data file.')
+    parser.add_argument('--redis','-r',type=str, dest='rfile', \
+                        default='../data_example/redis_info.json', \
+                        help='redis info file.')
+    parser.add_argument('--channel','-c',type=int, dest='channel', \
+                        default=0, \
+                        help='specify the channel No.')
+    parser.add_argument('--output','-o',type=str, dest='ofile', \
+                        default='workunit_example.sah',
+                        help='output filename.')
+    args = parser.parse_args()
 
     # open data file
-    f = pywu.io.dfile('../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat')
+    f = pywu.io.dfile(args.dfile)
     info = f.info
     t = info['timestamp']
     beam = info['beam']
     # get metadata from redis_info.json
-    r = pywu.io.redis_info('../data_example/redis_info.json')
+    r = pywu.io.redis_info(args.rfile)
     # seek coord from redis, and read data from the data file
     # we only get 2 seconds of data for test
     nsec = 2
     coord = r.seekcoord(beam, t, nsec)
     d = f.dread(nsec)
     # generate workunit for channel 0
-    ch = 0
-    wu = pywu.wu_file('workunit_example.sah')
+    ch = args.channel
+    wu = pywu.wu_file(args.ofile)
     wu.init_header(info, coord, ch)
     wu.set_data(d[ch])
     wu.gen()
