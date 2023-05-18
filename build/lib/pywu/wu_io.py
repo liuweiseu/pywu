@@ -46,6 +46,8 @@ class dfile(object):
         self.info['time_recorded'] = datetime.strftime(self.info['datetime'],"%a %b %d %H:%M:%S %Y")
         t = astropy.time.Time(self.info['datetime'])
         self.info['time_recorded_jd'] = t.jd
+        self.info['beam'] = int(self.info['beam'])
+        self.info['pol'] = int(self.info['pol'])
 
     def dread(self, nsec=-1, skip=0):
         """

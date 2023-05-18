@@ -20,7 +20,7 @@ class wu_file(object):
     
     def init_header(self, info, coord, ch):
         # tape_info
-        header['tape_info']['beam']               = int(info['beam']) * 2 + int(info['pol'])
+        header['tape_info']['beam']               = info['beam'] * 2 + info['pol']
         # data_desc
         header['data_desc']['start_ra']           = coord[0]['ra']
         header['data_desc']['start_dec']          = coord[0]['dec']
