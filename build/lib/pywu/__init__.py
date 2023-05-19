@@ -17,5 +17,5 @@ from .wu_dict import analysis_cfg
 from .wu_dict import subband_desc
 from .wu_dict import group_info
 from .wu_dict import workunit_header
-from .wu_dict import data
+from .wu_dict import wu_data
 from .wu_dict import workunit_grp

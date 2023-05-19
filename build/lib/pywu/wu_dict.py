@@ -220,7 +220,7 @@ workunit_header = {
 """
 data template
 """
-data = {
+wu_data = {
     'class'         : 'xml_data', \
     'tag'           : 'data', \
     'length'        : 2097152, \
@@ -231,7 +231,7 @@ data = {
 
 workunit_grp = {
     'class'           : 'xml_base', \
-    'tag'             : 'workunit_grp', \
+    'tag'             : 'workunit', \
     'workunit_header' : workunit_header, \
-    'data'            : data
+    'data'            : wu_data
 }

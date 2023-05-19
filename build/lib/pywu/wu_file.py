@@ -97,8 +97,10 @@ class wu_file(object):
         Inputs:
             - d(np.ndarray):
         """
-        data['values'] = d
-        data['length'] = len(d)*2 + 2
+        wu_data['values'] = d
+        wu_data['length'] = len(d)*2 + 2
+        data_desc['nsamples'] = len(d)*2 + 2
+
 
     def gen(self):
         f = open(self.filename, 'w')
