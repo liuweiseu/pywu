@@ -68,9 +68,11 @@ class xml_base(object):
                 continue
             v = c[k]
             if(isinstance(v,np.ndarray)):
+                self.print_xml_begin(k)
                 for i in v:
                     ins = eval(i['class'])(k,i)
                     ins.print_xml(self.f)
+                self.print_xml_end(k)
             elif(isinstance(v,dict)):
                 ins = eval(v['class'])(k,v)
                 ins.print_xml(self.f)

@@ -70,7 +70,7 @@ class wu_file(object):
         wu_header['data_desc']['start_dec']          = coord[0]['dec']
         wu_header['data_desc']['end_ra']             = coord[-1]['ra']
         wu_header['data_desc']['end_dec']            = coord[-1]['dec']
-        wu_header['data_desc']['coord']              = coord
+        wu_header['data_desc']['coords']              = coord
         # TODO: calculate true_angle_range
         wu_header['data_desc']['true_angle_range']   = abs(float(coord[0]['ra']) - float(coord[-1]['ra'])) + \
                                                        abs(float(coord[0]['dec']) - float(coord[-1]['dec']))
