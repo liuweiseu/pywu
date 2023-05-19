@@ -98,6 +98,7 @@ class wu_file(object):
             - d(np.ndarray):
         """
         data['values'] = d
+        data['length'] = len(d)*2 + 2
 
     def gen(self):
         f = open(self.filename, 'w')

@@ -188,4 +188,4 @@ class xml_data(xml_coeff):
         d = struct.pack('<%dH'%(l),*c['values'])
         for v in d:
             print("%c"%(v), file=self.f, end='')
-        print('',file=self.f)
+        print('  ',file=self.f)
