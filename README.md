@@ -42,7 +42,9 @@ There are four modules in the package:
 
     # open data file
     f = pywu.io.dfile('../data_example/serendip6_m13_1.05G-1.45G_MB_01_00_20230511_165609_868843681_raw_2s.dat')
-    info = f.info
+    info = f.dparse()
+    t = info['timestamp']
+    beam = info['beam']
     start_t = info['timestamp']
     beam = info['beam']
     # get metadata from redis_info.json
