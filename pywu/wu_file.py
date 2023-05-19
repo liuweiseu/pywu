@@ -4,9 +4,11 @@ Most of the user should be able to get a workunit file by only using this module
 """
 from .wu_xml import xml_base
 from .wu_dict import *
-from .wu_io import FS, FFT_POINT, LO
+from .obs_config import *
 
 wu_header={
+'workunit_header'   : dict(), \
+'group_info'        : dict(), \
 'tape_info'         : dict(), \
 'data_desc'         : dict(), \
 'receiver_cfg'      : dict(), \
@@ -42,7 +44,26 @@ class wu_file(object):
             - coord(list or np.ndarray): 
             - ch(int): 
         """
+        # the workunit name is: <source_filename>.<splitter_pid>.<data_start_block>.<receiver_s4_id>.<band_number>
+        # TODO: check with Eric
+        fn                                           = info['fn']
+        splitter_pid                                 = 0
+        data_start_block                             = 0
+        receiver_s4_id                               = 30 + info['beam']*2 + info['pol']
+        band_number                                  = 0
+        # workunit_header
+        wu_header['workunit_header']['name']         = '%s.%d.%d.%d.%d'%(fn,                \
+                                                                        splitter_pid,       \
+                                                                        data_start_block,   \
+                                                                        receiver_s4_id,     \
+                                                                        band_number)
+        # group_info
+        wu_header['group_info']['name']              = '%s.%d.%d.%d'%(fn,                   \
+                                                                        splitter_pid,       \
+                                                                        data_start_block,   \
+                                                                        receiver_s4_id,     )
         # tape_info
+        wu_header['tape_info']['name']               = fn
         wu_header['tape_info']['beam']               = info['beam'] * 2 + info['pol']
         # data_desc
         wu_header['data_desc']['start_ra']           = coord[0]['ra']
@@ -55,7 +76,7 @@ class wu_file(object):
         wu_header['data_desc']['time_recorded']      = info['time_recorded']
         wu_header['data_desc']['time_recorded_jd']   = info['time_recorded_jd']
         # receiver_cfg
-        wu_header['receiver_cfg']['s4_id']           = 30 + info['beam']*2 + info['pol']
+        wu_header['receiver_cfg']['s4_id']           = receiver_s4_id
         wu_header['receiver_cfg']['name']            = "FAST %s MultiBeam, Beam %s, Pol %s"%( \
                                                         info['band'], info['beam'], info['pol'])
         # subband_desc

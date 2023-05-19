@@ -1,6 +1,7 @@
 README.md
 setup.py
 pywu/__init__.py
+pywu/obs_config.py
 pywu/util.py
 pywu/wu_dict.py
 pywu/wu_file.py

@@ -7,22 +7,13 @@ from datetime import datetime, timezone, timedelta
 import astropy.time
 import math
 
-# We use beijing time, so we need to convert it to UTC time
-UTC_OFFSET = 8
-# We recorded 256 channels of data
-CHANNELS = 256
-# We recorded re and im in byte
-FRAME_SIZE = CHANNELS * 2
-# lo freq
-LO = 1000
-# ADC sampling freq
-FS = 1000 * 10**6
-# FFT points
-FFT_POINT = 65536
+from .obs_config import *
+
 # The data size we expected in one second
 FRAME_SIZE_PER_SEC = math.floor(FS/FFT_POINT)*FRAME_SIZE
 
 info = {
+    'fn'        : '', \
     'sw'        : '', \
     'node'      : '', \
     'band'      : '', \
@@ -51,6 +42,9 @@ class dfile(object):
         """
         self.filename = filename
         self.info = info
+        
+
+    def dparse(self):
         try:
             self.fp = open(self.filename, 'rb')
         except:
@@ -60,8 +54,11 @@ class dfile(object):
         fnstr = self.filename.split('/')[-1].strip('.dat').split('_')
         i = 0
         for k in self.info:
+            if(k == 'fn'):
+                continue
             self.info[k] = fnstr[i]
             i += 1
+        self.info['fn'] = self.filename.split('/')[-1].strip('.dat')
         datetime_str = self.info['date'] + self.info['time']
         tz = timezone(timedelta(hours=UTC_OFFSET))
         self.info['datetime'] = datetime.strptime(datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=tz)
@@ -71,7 +68,8 @@ class dfile(object):
         self.info['time_recorded_jd'] = t.jd
         self.info['beam'] = int(self.info['beam'])
         self.info['pol'] = int(self.info['pol'])
-
+        return self.info
+    
     def dread(self, nsec, skip=0):
         """
         Description:

@@ -22,7 +22,7 @@ def main():
 
     # open data file
     f = pywu.io.dfile(args.dfile)
-    info = f.info
+    info = f.dparse()
     t = info['timestamp']
     beam = info['beam']
     # get metadata from redis_info.json
