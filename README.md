@@ -34,7 +34,6 @@ There are four modules in the package:
     * xml_coeff() : genetate coeff in a workunit.
     * xml_data() : generate data in a workunit.
 * wu_dict : It contains a template dict of a workunit file. What we need to do is fill the content into this dict.  
-**Note:** Before loading `redis_info.json`, you need to add '[' and ']' at the beginning and end of the file, you also need to replace '}{' with '},{' in the .json file.
 # Examples 
 * Here is an example about how to use this package:
     ```python
