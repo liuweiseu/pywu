@@ -97,7 +97,21 @@ class dfile(object):
         return d.transpose()
     
 
-
+def jsonfix(filename):
+    """
+    Description:
+        This method is used for fix json format.
+        The origianl format of redis_info.json is not standard json.
+    Input:
+        - filename(str): the json file.
+    """
+    f = open(filename,'r+')
+    content = f.read()
+    content = content.replace('}{','},{')
+    f.seek(0,0)
+    f.write('[\n'+content+'\n]')
+    f.close()
+    
 class redis_info(object):
     """
     Description:
@@ -113,8 +127,14 @@ class redis_info(object):
                 Default=None
         """
         self.filename = filename
-        with open(self.filename) as f:
-            self.metadata = json.load(f)
+        try:
+            with open(self.filename) as f:
+                self.metadata = json.load(f)
+        except:
+            jsonfix(self.filename)
+            with open(self.filename) as f:
+                self.metadata = json.load(f)
+
         for md in self.metadata:
             md['TimeStamp'] = float(md['TimeStamp'])/1000.0
     
