@@ -19,7 +19,7 @@ class xml_base(object):
     """
     # global variable for indent
     nindent = 0
-    def __init__(self, tag='workunit_group', info=workunit_grp):
+    def __init__(self, info=workunit_grp):
         """
         Description:
             Create a xml_base object based on tag and info.
@@ -30,7 +30,7 @@ class xml_base(object):
                 Default=workunit_grp
         """
         self.f = 0
-        self.tag = tag
+        self.tag = info['tag']
         self.info = info
         
     def print_xml_begin(self,tag):
@@ -64,21 +64,22 @@ class xml_base(object):
                 Default=None
         """
         for k in c:
-            if(k == 'class'):
+            if(k == 'class' or k == 'tag'):
                 continue
             v = c[k]
             if(isinstance(v,np.ndarray)):
                 self.print_xml_begin(k)
                 for i in v:
-                    ins = eval(i['class'])(k,i)
+                    ins = eval(i['class'])(i)
                     ins.print_xml(self.f)
                 self.print_xml_end(k)
             elif(isinstance(v,dict)):
-                ins = eval(v['class'])(k,v)
+                ins = eval(v['class'])(v)
                 ins.print_xml(self.f)
             else:
-                self.print_xml_indent()
-                print("<%s>%s</%s>"%(k, v, k), file=self.f)
+                if(v!=''):
+                    self.print_xml_indent()
+                    print("<%s>%s</%s>"%(k, v, k), file=self.f)
 
     def print_xml_indent(self):
         """
@@ -109,17 +110,15 @@ class xml_coeff(xml_base):
         xml_coeff is inherited from xml_base, which is used fro print coeff.
         The reason is that  coeff's format is a bit different.
     """
-    def __init__(self, tag, info):
+    def __init__(self, info):
         """
         Description:
             Create a xml_coeff object.
         Inputs:
-            - tag(str): tag of the xml structure.
-                Default='workunit_group'
             - info(dict): xml content in dict structure.
                 Default=workunit_grp
         """
-        super(xml_coeff, self).__init__(tag, info)
+        super(xml_coeff, self).__init__(info)
 
     def print_xml_begin(self, tag):
         """
@@ -136,7 +135,7 @@ class xml_coeff(xml_base):
         self.print_xml_indent()
         print("<%s"%(tag),file=self.f, end='')
         for k in self.info:
-            if(k == 'class' or k == 'values'):
+            if(k == 'class' or k == 'tag' or k == 'values'):
                 continue
             v = self.info[k]
             print(" %s=%s"%(k,v),file=self.f, end='')
@@ -165,7 +164,7 @@ class xml_data(xml_coeff):
         xml_data is inherited from xml_coeff, which is used for print data.
         data is in binary format.
     """
-    def __init__(self, tag, info):
+    def __init__(self, info):
         """
         Description:
             Create a xml_data format.
@@ -175,7 +174,7 @@ class xml_data(xml_coeff):
             - info(dict): xml content in dict format.
                 Default=None
         """
-        super(xml_data, self).__init__(tag, info)
+        super(xml_data, self).__init__(info)
     
     def print_xml_content(self, c):
         """

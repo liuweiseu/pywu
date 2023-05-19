@@ -13,6 +13,7 @@ tape template
 """
 tape_info = {
     'class'            : 'xml_base', \
+    'tag'              : 'tape_info', \
     'name'             : 'test', \
     'start_time'       : 2454822.5698634, \
     'last_block_time'  : 2454822.5698634, \
@@ -27,6 +28,7 @@ coordinate template
 """
 coordinate_t = {
     'class'         : 'xml_base', \
+    'tag'           : 'coordinate_t', \
     'time'          : 2454822.5698622, \
     'ra'            : 3.2887318938763, \
     'dec'           : 23.410418247457
@@ -37,6 +39,7 @@ data_description template
 """ 
 data_desc =  {
     'class'             : 'xml_base', \
+    'tag'               : 'data_desc', \
     'start_ra'          : 3.2887318938763, \
     'start_dec'         : 23.410418247457, \
     'end_ra'            : 3.3185884614727, \
@@ -53,6 +56,7 @@ corr_coeff template
 """
 az_corr_coeff = {
     'class'         : 'xml_coeff', \
+    'tag'           : 'az_corr_coeff', \
     'length'        : 99, \
     'encoding'      : "\"x-csv\"",\
     'values'        : [-37,-6.05,92.35,-731.21]
@@ -60,6 +64,7 @@ az_corr_coeff = {
 
 zen_corr_coeff = {
     'class'         : 'xml_coeff', \
+    'tag'           : 'zen_corr_coeff', \
     'length'        : 99, \
     'encoding'      : "\"x-csv\"",\
     'values'        : [-37,-6.05,92.35,-731.21]
@@ -69,6 +74,7 @@ receiver template
 """
 receiver_cfg = {
     'class'         : 'xml_base', \
+    'tag'           : 'receiver_cfg', \
     's4_id'         : 30, \
     'name'          : 'FAST 1.05G-1.45G MultiBeam, Beam 0, Pol 0', \
     'beam_width'    : 0.0483, \
@@ -90,6 +96,7 @@ recorder template
 """
 recorder_cfg = {
     'class'         : 'xml_base', \
+    'tag'           : 'recorder_cfg', \
     'name'          : 'serendip6_reobs_FAST', \
     'bits_per_sample': 16, \
     'sample_rate'   : 15258.7890625, \
@@ -102,6 +109,7 @@ splitter template
 """
 splitter_cfg = {
     'class'         : 'xml_base', \
+    'tag'           : 'splitter_cfg', \
     'version'       : 0.2123456, \
     'data_type'     : 'binary',\
     'fft_len'       : 256, \
@@ -118,11 +126,13 @@ chirp template
 """
 chirp_parameter = {
     'class'         : 'xml_base', \
+    'tag'           : 'chirp_parameter', \
     'chirp_limit'   : 30, \
     'fft_len_flags' : 262136
 }
 chirp_parameter_1 = {
     'class'         : 'xml_base', \
+    'tag'           : 'chirp_parameter', \
     'chirp_limit'   : 100, \
     'fft_len_flags' : 65528
 }
@@ -131,6 +141,7 @@ analysis template
 """
 analysis_cfg = {
     'class'                         : 'xml_base', \
+    'tag'                           : 'analysis_cfg', \
     'spike_thresh'                  : 24, \
     'spikes_per_spectrum'           : 1,\
     'gauss_null_chi_sq_thresh'      : 2.15593648,\
@@ -173,6 +184,7 @@ subband template
 """
 subband_desc = {
     'class'         : 'xml_base', \
+    'tag'           : 'subband_desc', \
     'number'        : '',
     'center'        : 1420482788.0859,
     'base'          : 1420478515.625,
@@ -183,6 +195,7 @@ group_info template
 """
 group_info = {
     'class'         : 'xml_base', \
+    'tag'           : 'group_info', \
     'tape_info'     : tape_info, \
     'name'          : '', \
     'data_desc'     : data_desc, \
@@ -197,6 +210,7 @@ workunit_header template
 """
 workunit_header = {
     'class'         : 'xml_base', \
+    'tag'           : 'workunit_header', \
     'name'          : '', \
     'group_info'    : group_info, \
     'subband_desc'  : subband_desc, \
@@ -208,6 +222,7 @@ data template
 """
 data = {
     'class'         : 'xml_data', \
+    'tag'           : 'data', \
     'length'        : 2097152, \
     'encoding'      : "\"binary\"",\
     'values'        : [48,49,50,-122,64]
@@ -216,6 +231,7 @@ data = {
 
 workunit_grp = {
     'class'           : 'xml_base', \
+    'tag'             : 'workunit_grp', \
     'workunit_header' : workunit_header, \
     'data'            : data
 }

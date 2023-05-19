@@ -21,7 +21,7 @@ class wu_file(object):
         This is a high-level class for generating a workunit file.
         User should be able to get a workunit by using this class only.
     """
-    def __init__(self, filename, info=workunit_grp, tag='workunit_group'):
+    def __init__(self, filename, info=workunit_grp):
         """
         Description:
             Create a wu_file object based on the name and info.
@@ -33,7 +33,7 @@ class wu_file(object):
                 Default=workunit_grp
         """
         self.filename = filename
-        self.wu_xml = xml_base(info=info, tag=tag)
+        self.wu_xml = xml_base(info=info)
        
     def init_header(self, info, coord, ch):
         """

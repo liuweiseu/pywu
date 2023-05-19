@@ -168,6 +168,7 @@ class redis_info(object):
             dec = self.metadata[i+offset][s]
             coord = {
                 'class' : 'xml_base', \
+                'tag'   : 'coordinate_t', \
                 'time'  : time, \
                 'ra'    : ra, \
                 'dec'   : dec
