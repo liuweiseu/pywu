@@ -66,7 +66,7 @@ class dfile(object):
         self.info['time_recorded'] = datetime.strftime(self.info['datetime'],"%a %b %d %H:%M:%S %Y")
         t = astropy.time.Time(self.info['datetime'])
         self.info['time_recorded_jd'] = t.jd
-        self.info['beam'] = int(self.info['beam'])
+        self.info['beam'] = int(self.info['beam']) - 1
         self.info['pol'] = int(self.info['pol'])
         return self.info
     
@@ -142,9 +142,10 @@ class redis_info(object):
         coords = []
         for i in range(l):
             time = self.metadata[i+offset]['TimeStamp']
-            beam = 'SDP_Beam%02d_RA'%(b)
-            ra = self.metadata[i+offset][beam]
-            dec = self.metadata[i+offset][beam]
+            s = 'SDP_Beam%02d_RA'%(b)
+            ra = self.metadata[i+offset][s]
+            s = 'SDP_Beam%02d_DEC'%(b)
+            dec = self.metadata[i+offset][s]
             coord = {
                 'class' : 'xml_base', \
                 'time'  : time, \
