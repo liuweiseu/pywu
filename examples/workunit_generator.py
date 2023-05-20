@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 from argparse import ArgumentParser
+import numpy as np
 import pywu
 
 def main():
@@ -31,7 +32,8 @@ def main():
     # we only get 2 seconds of data for test
     nsec = 2
     coord = r.seekcoord(beam, t, nsec)
-    d = f.dread(nsec)
+    nsamples = nsec * pywu.SAMPLES_PER_SEC
+    d = f.dread(nsamples)
     # generate workunit for channel 0
     ch = args.channel
     wu = pywu.wu_file(args.ofile)

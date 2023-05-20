@@ -98,8 +98,8 @@ class wu_file(object):
             - d(np.ndarray):
         """
         wu_data['values'] = d
-        wu_data['length'] = len(d)*2 + 2
-        data_desc['nsamples'] = len(d)*2 + 2
+        wu_data['length'] = len(d) * BYTES_PER_SAMPLE + 2
+        data_desc['nsamples'] = len(d)
 
 
     def gen(self):

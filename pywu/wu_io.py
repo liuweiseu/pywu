@@ -9,9 +9,6 @@ import math
 
 from .obs_config import *
 
-# The data size we expected in one second
-FRAME_SIZE_PER_SEC = math.floor(FS/FFT_POINT)*FRAME_SIZE
-
 info = {
     'fn'        : '', \
     'sw'        : '', \
@@ -70,12 +67,12 @@ class dfile(object):
         self.info['pol'] = int(self.info['pol'])
         return self.info
     
-    def dread(self, nsec, skip=0):
+    def dread(self, nsamples, skip=0):
         """
         Description:
             read data from data file
         Inputs:
-            - nsec(int): The length of data in seconds.
+            - nsamples(int): The number of samples.
                 Default=None
             - skip(int): Before reading data out, skip the data in frame.
                 Default=0
@@ -89,9 +86,9 @@ class dfile(object):
         """
         # little-endian integer-16
         dtype = np.dtype('<u2')
-        start = skip * FRAME_SIZE
+        start = skip * SAMPLE_SIZE
         self.fp.seek(start,1)
-        nbytes = nsec * FRAME_SIZE_PER_SEC
+        nbytes = nsamples * SAMPLE_SIZE
         d = np.frombuffer(self.fp.read(nbytes), dtype=dtype)
         d.shape = (-1,CHANNELS)
         return d.transpose()
