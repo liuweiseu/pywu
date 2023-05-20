@@ -52,7 +52,8 @@ There are four modules in the package:
     # we only get 2 seconds of data for test
     nsec = 2
     coord = r.seekcoord(beam, start_t, nsec)
-    d = f.dread(nsec)
+    nsamples = nsec * pywu.SAMPLES_PER_SEC
+    d = f.dread(nsamples)
     # generate workunit for channel 0
     ch = 0
     wu = pywu.wu_file('workunit_example.sah')
