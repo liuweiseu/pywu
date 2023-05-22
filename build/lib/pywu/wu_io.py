@@ -158,7 +158,9 @@ class redis_info(object):
             offset += 1
         coords = []
         for i in range(l):
-            time = self.metadata[i+offset]['TimeStamp']
+            timestamp = self.metadata[i+offset]['TimeStamp']
+            t_dt = datetime.utcfromtimestamp(float(timestamp))
+            t_astro = astropy.time.Time(t_dt)
             s = 'SDP_Beam%02d_RA'%(b)
             ra = self.metadata[i+offset][s]
             s = 'SDP_Beam%02d_DEC'%(b)
@@ -166,7 +168,7 @@ class redis_info(object):
             coord = {
                 'class' : 'xml_base', \
                 'tag'   : 'coordinate_t', \
-                'time'  : time, \
+                'time'  : t_astro.jd, \
                 'ra'    : ra, \
                 'dec'   : dec
             }

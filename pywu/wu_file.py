@@ -40,9 +40,12 @@ class wu_file(object):
         Description:
             Change workunit_header based on info, coord and ch.
         Inputs:
-            - info(dict):
-            - coord(list or np.ndarray): 
-            - ch(int): 
+            - info(dict): information from raw data file name
+                Default=None
+            - coord(list or np.ndarray): coord info from redis_info.json
+                Default=None
+            - ch(int): channel number [0-255]
+                Default=None
         """
         # the workunit name is: <source_filename>.<splitter_pid>.<data_start_block>.<receiver_s4_id>.<band_number>
         # TODO: check with Eric
@@ -65,13 +68,15 @@ class wu_file(object):
         # tape_info
         wu_header['tape_info']['name']               = fn
         wu_header['tape_info']['beam']               = info['beam'] * 2 + info['pol']
+        wu_header['tape_info']['start_time']         = coord[0]['time']
+        wu_header['tape_info']['last_block_time']    = coord[0]['time']
         # data_desc
         wu_header['data_desc']['start_ra']           = coord[0]['ra']
         wu_header['data_desc']['start_dec']          = coord[0]['dec']
         wu_header['data_desc']['end_ra']             = coord[-1]['ra']
         wu_header['data_desc']['end_dec']            = coord[-1]['dec']
         wu_header['data_desc']['coords']              = coord
-        # TODO: calculate true_angle_range
+        # TODO: check the true_angle_range
         wu_header['data_desc']['true_angle_range']   = abs(float(coord[0]['ra']) - float(coord[-1]['ra'])) + \
                                                        abs(float(coord[0]['dec']) - float(coord[-1]['dec']))
         wu_header['data_desc']['time_recorded']      = info['time_recorded']

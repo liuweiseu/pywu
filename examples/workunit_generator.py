@@ -30,7 +30,7 @@ def main():
     r = pywu.io.redis_info(args.rfile)
     # seek coord from redis, and read data from the data file
     # we only get 2 seconds of data for test
-    nsec = 2
+    nsec = 70
     coord = r.seekcoord(beam, t, nsec)
     nsamples = nsec * pywu.SAMPLES_PER_SEC
     d = f.dread(nsamples)
@@ -38,7 +38,10 @@ def main():
     ch = args.channel
     wu = pywu.wu_file(args.ofile)
     wu.init_header(info, coord, ch)
-    wu.set_data(d[ch])
+    # this is the fake data for test
+    data = np.ones(1048576, dtype=np.int16)
+    #wu.set_data(d[ch])
+    wu.set_data(data)
     wu.gen()
 
 if __name__ == '__main__':
