@@ -116,7 +116,7 @@ splitter_cfg = {
     'ifft_len'      : 1, \
     'filter'        : 'pfb', \
     'window'        : 'hanning', \
-    'sammples_per_wu': 1048576, \
+    'samples_per_wu': 1048576, \
     'highpass'      : 0, \
     'blanker_filter': 'randomize'
 }
@@ -126,13 +126,13 @@ chirp template
 """
 chirp_parameter = {
     'class'         : 'xml_base', \
-    'tag'           : 'chirp_parameter', \
+    'tag'           : 'chirp_parameter_t', \
     'chirp_limit'   : 30, \
     'fft_len_flags' : 262136
 }
 chirp_parameter_1 = {
     'class'         : 'xml_base', \
-    'tag'           : 'chirp_parameter', \
+    'tag'           : 'chirp_parameter_t', \
     'chirp_limit'   : 100, \
     'fft_len_flags' : 65528
 }
@@ -214,7 +214,7 @@ workunit_header = {
     'name'          : '', \
     'group_info'    : group_info, \
     'subband_desc'  : subband_desc, \
-    'sd_id'         : 0
+    'sb_id'         : 0
 }
 
 """
