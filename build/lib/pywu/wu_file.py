@@ -77,7 +77,7 @@ class wu_file(object):
         wu_header['data_desc']['end_ra']             = coord[-1]['ra']
         wu_header['data_desc']['end_dec']            = coord[-1]['dec']
         wu_header['data_desc']['coords']              = coord
-        
+
         wu_header['data_desc']['true_angle_range']   = math.sqrt((float(coord[0]['ra']) - float(coord[-1]['ra']))**2 + \
                                                        (float(coord[0]['dec']) - float(coord[-1]['dec']))**2)
         wu_header['data_desc']['time_recorded']      = info['time_recorded']
@@ -89,8 +89,8 @@ class wu_file(object):
         # subband_desc
         ch_center_freq = LO + FS/FFT_POINT*ch
         wu_header['subband_desc']['number']          = ch
-        wu_header['subband_desc']['center']          = ch_center_freq
-        wu_header['subband_desc']['base']            = ch_center_freq
+        wu_header['subband_desc']['center']          = ch_center_freq * 10**6
+        wu_header['subband_desc']['base']            = ch_center_freq * 10**6
         ### create wu_header
         for key in wu_header:
             for subkey in wu_header[key]:

@@ -461,8 +461,8 @@
     </group_info>
     <subband_desc>
       <number>0</number>
-      <center>1000.0</center>
-      <base>1000.0</base>
+      <center>1000000000.0</center>
+      <base>1000000000.0</base>
       <sample_rate>15258.7890625</sample_rate>
     </subband_desc>
     <sb_id>0</sb_id>
