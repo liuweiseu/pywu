@@ -50,6 +50,8 @@ class wu_file(object):
         """
         # the workunit name is: <source_filename>.<splitter_pid>.<data_start_block>.<receiver_s4_id>.<band_number>
         # TODO: splitter_pid and data_start_block may need to be chagned.
+        #       the splitter_pid is the process pid for splitter;
+        #       the data_start_block is in MB unit.
         fn                                           = info['fn']
         splitter_pid                                 = 0
         data_start_block                             = 0
