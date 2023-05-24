@@ -49,7 +49,7 @@ class wu_file(object):
                 Default=None
         """
         # the workunit name is: <source_filename>.<splitter_pid>.<data_start_block>.<receiver_s4_id>.<band_number>
-        # TODO: check with Eric
+        # TODO: splitter_pid and data_start_block may need to be chagned.
         fn                                           = info['fn']
         splitter_pid                                 = 0
         data_start_block                             = 0

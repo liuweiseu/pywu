@@ -186,6 +186,7 @@ class xml_data(xml_coeff):
         if(not isinstance(c['values'], np.ndarray)):
             c['values'] = np.array(c['values'], dtype=np.int16)
         l = len(c['values'])
+        # TODO: double check if it's little endian or big endian here
         d = struct.pack('<%dH'%(l),*c['values'])
         for v in d:
             print("%c"%(v), file=self.f, end='')

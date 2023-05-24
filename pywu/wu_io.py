@@ -85,6 +85,8 @@ class dfile(object):
                 d[255] is the last channel of data.
         """
         # little-endian integer-16
+        # TODO: double check the dtype here, and check if it's big-endian or litter endian.
+        #       what we expected is real part in low address  
         dtype = np.dtype('<u2')
         start = skip * SAMPLE_SIZE
         self.fp.seek(start,1)
