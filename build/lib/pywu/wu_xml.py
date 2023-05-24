@@ -182,7 +182,7 @@ class xml_data(xml_coeff):
              It's an overloaded method for xml_data format.
              data is in binary format.
         """
-        self.print_xml_indent()
+        #self.print_xml_indent()
         if(not isinstance(c['values'], np.ndarray)):
             c['values'] = np.array(c['values'], dtype=np.int16)
         l = len(c['values'])

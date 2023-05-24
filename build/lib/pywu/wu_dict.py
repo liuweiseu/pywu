@@ -84,8 +84,8 @@ receiver_cfg = {
     'elevation'     : 1110.0288, \
     'diameter'      : 500, \
     'az_orientation': 0, \
-    'az_corr_coeff' : '', \
-    'zen_corr_coeff': '', \
+    'az_corr_coeff' : 0, \
+    'zen_corr_coeff': 0, \
     'array_az_ellipse' : 0, \
     'array_za_ellipse' : 0, \
     'array_angle'   : 0
@@ -111,14 +111,15 @@ splitter_cfg = {
     'class'         : 'xml_base', \
     'tag'           : 'splitter_cfg', \
     'version'       : 0.2123456, \
-    'data_type'     : 'binary',\
+    'data_type'     : 'sun_binary',\
     'fft_len'       : 256, \
     'ifft_len'      : 1, \
     'filter'        : 'pfb', \
     'window'        : 'hanning', \
     'samples_per_wu': 1048576, \
     'highpass'      : 0, \
-    'blanker_filter': 'randomize'
+    'blanker_filter': 'randomize', \
+    'wu_bits_per_sample' : 16
 }
 
 """
@@ -176,7 +177,10 @@ analysis_cfg = {
     'max_pulses'                    : 0, \
     'max_triplets'                  : 0, \
     'keyuniq'                       : 7344400, \
-    'credit_rate'                   : 2.8499999
+    'credit_rate'                   : 2.8499999, \
+    'autocorr_thresh'               : 17.8, \
+    'autocorr_per_spectrum'         : 1, \
+    'autocorr_fftlen'               : 131072
 }
 
 """
@@ -224,7 +228,7 @@ wu_data = {
     'class'         : 'xml_data', \
     'tag'           : 'data', \
     'length'        : 2097152, \
-    'encoding'      : "\"binary\"",\
+    'encoding'      : "\"sun_binary\"",\
     'values'        : [48,49,50,-122,64]
 }
 
