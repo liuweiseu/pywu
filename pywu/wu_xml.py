@@ -8,6 +8,7 @@ import numpy as np
 import struct
 from .wu_dict import *
 
+ENCODING = 'utf-8'
 """
 class: xml_base
 """
@@ -42,7 +43,8 @@ class xml_base(object):
                 Default=None
         """
         self.print_xml_indent()
-        print("<%s>"%(tag),file=self.f)
+        s = bytes("<%s>\n"%(tag),ENCODING)
+        self.f.write(s)
 
     def print_xml_end(self,tag):
         """
@@ -53,7 +55,8 @@ class xml_base(object):
                 Default=None
         """
         self.print_xml_indent()
-        print("</%s>"%(tag), file=self.f)
+        s = bytes("</%s>\n"%(tag), ENCODING)
+        self.f.write(s)
     
     def print_xml_content(self, c):
         """
@@ -79,14 +82,17 @@ class xml_base(object):
             else:
                 if(v!=''):
                     self.print_xml_indent()
-                    print("<%s>%s</%s>"%(k, v, k), file=self.f)
+                    s = bytes("<%s>%s</%s>\n"%(k, v, k), ENCODING)
+                    self.f.write(s)
+                    #print(s, file=self.f)
 
     def print_xml_indent(self):
         """
         Description:
             Print indent.
         """
-        print(' '*xml_base.nindent, file=self.f, end='')
+        s = bytes("%s"%(' '*xml_base.nindent),ENCODING)
+        self.f.write(s)
 
     def print_xml(self,f):
         """
@@ -133,13 +139,16 @@ class xml_coeff(xml_base):
                 Default=None
         """
         self.print_xml_indent()
-        print("<%s"%(tag),file=self.f, end='')
+        s = bytes("<%s"%(tag), ENCODING)
+        self.f.write(s)
         for k in self.info:
             if(k == 'class' or k == 'tag' or k == 'values'):
                 continue
             v = self.info[k]
-            print(" %s=%s"%(k,v),file=self.f, end='')
-        print(">", file=self.f)
+            s = bytes(" %s=%s"%(k,v), ENCODING)
+            self.f.write(s)
+        s = bytes(">\n", ENCODING)
+        self.f.write(s)
 
     def print_xml_content(self, c):
         """
@@ -155,8 +164,11 @@ class xml_coeff(xml_base):
         """
         self.print_xml_indent()
         for v in c['values'][:-1]:
-            print("%s,"%(v), file=self.f, end='')
-        print(c['values'][-1], file=self.f)
+            s = bytes("%s,"%(v), ENCODING)
+            self.f.write(s)
+        s = bytes(c['values'][-1], ENCODING)
+        self.f.write(s)
+        self.f.write('\n')
 
 class xml_data(xml_coeff):
     """
@@ -187,7 +199,7 @@ class xml_data(xml_coeff):
             c['values'] = np.array(c['values'], dtype=np.int16)
         l = len(c['values'])
         # TODO: double check if it's little endian or big endian here
-        d = struct.pack('<%dH'%(l),*c['values'])
-        for v in d:
-            print("%c"%(v), file=self.f, end='')
-        print('  ',file=self.f)
+        for v in c['values']:
+            self.f.write(v)
+        s = bytes('  \n', ENCODING)
+        self.f.write(s)

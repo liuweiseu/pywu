@@ -42,6 +42,10 @@ class dfile(object):
         
 
     def dparse(self):
+        """
+        Description:
+            parse the raw data filename, getting starting time, beam No...from the filename. 
+        """
         try:
             self.fp = open(self.filename, 'rb')
         except:

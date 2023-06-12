@@ -49,7 +49,9 @@ class wu_file(object):
                 Default=None
         """
         # the workunit name is: <source_filename>.<splitter_pid>.<data_start_block>.<receiver_s4_id>.<band_number>
-        # TODO: check with Eric
+        # TODO: splitter_pid and data_start_block may need to be chagned.
+        #       the splitter_pid is the process pid for splitter;
+        #       the data_start_block is in MB unit.
         fn                                           = info['fn']
         splitter_pid                                 = 0
         data_start_block                             = 0
@@ -109,6 +111,6 @@ class wu_file(object):
 
 
     def gen(self):
-        f = open(self.filename, 'w')
+        f = open(self.filename, 'wb')
         self.wu_xml.print_xml(f)
         f.close()

@@ -111,6 +111,10 @@ class wu_file(object):
 
 
     def gen(self):
-        f = open(self.filename, 'w')
+        """
+        Description:
+            generate a workunit file
+        """
+        f = open(self.filename, 'wb')
         self.wu_xml.print_xml(f)
         f.close()

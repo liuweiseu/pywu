@@ -232,7 +232,9 @@ wu_data = {
     'values'        : [48,49,50,-122,64]
 }
 
-
+"""
+workunit group template
+"""
 workunit_grp = {
     'class'           : 'xml_base', \
     'tag'             : 'workunit', \
