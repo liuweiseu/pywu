@@ -89,7 +89,7 @@ class wu_file(object):
         wu_header['receiver_cfg']['name']            = "FAST %s MultiBeam, Beam %s, Pol %s"%( \
                                                         info['band'], info['beam'], info['pol'])
         # subband_desc
-        ch_center_freq = LO + FS/FFT_POINT*ch
+        ch_center_freq = LO + FS/FFT_POINT*(ch + START_CH)
         wu_header['subband_desc']['number']          = ch
         wu_header['subband_desc']['center']          = ch_center_freq * 10**6
         wu_header['subband_desc']['base']            = ch_center_freq * 10**6
@@ -111,6 +111,10 @@ class wu_file(object):
 
 
     def gen(self):
+        """
+        Description:
+            generate a workunit file
+        """
         f = open(self.filename, 'wb')
         self.wu_xml.print_xml(f)
         f.close()

@@ -5,12 +5,12 @@ import math
 
 # We use beijing time, so we need to convert it to UTC time
 UTC_OFFSET = 8
+# started recording channel
+START_CH = 27392
 # We recorded 256 channels of data
 CHANNELS = 256
 # Bytes pe samples
 BYTES_PER_SAMPLE = 2
-# We recorded re and im in byte
-SAMPLE_SIZE = CHANNELS * BYTES_PER_SAMPLE
 # lo freq
 LO = 1000
 # ADC sampling freq

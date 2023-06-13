@@ -71,7 +71,7 @@ class dfile(object):
         self.info['pol'] = int(self.info['pol'])
         return self.info
     
-    def dread(self, nsamples, skip=0):
+    def dread(self, nsamples, skip=0, channels=CHANNELS):
         """
         Description:
             read data from data file
@@ -92,11 +92,15 @@ class dfile(object):
         # TODO: double check the dtype here, and check if it's big-endian or litter endian.
         #       what we expected is real part in low address  
         dtype = np.dtype('<u2')
-        start = skip * SAMPLE_SIZE
+        sample_size = channels * BYTES_PER_SAMPLE
+        start = skip * sample_size
         self.fp.seek(start,1)
-        nbytes = nsamples * SAMPLE_SIZE
-        d = np.frombuffer(self.fp.read(nbytes), dtype=dtype)
-        d.shape = (-1,CHANNELS)
+        nbytes = nsamples * sample_size
+        if(nsamples == -1):
+            d = np.frombuffer(self.fp.read(), dtype=dtype)
+        else:
+            d = np.frombuffer(self.fp.read(nbytes), dtype=dtype)
+        d.shape = (-1,channels)
         return d.transpose()
     
 
@@ -156,10 +160,9 @@ class redis_info(object):
             - coords(list): 
                 It's a list of coords, and each item is a dict, which contains time, ra and dec.
         """
-        start = self.metadata[0]['TimeStamp']
         offset = 0
         for md in self.metadata:
-            if(abs(md['TimeStamp'] - t)<=0.5):
+            if(abs(md['TimeStamp'] - t)<=1):
                 break
             offset += 1
         coords = []
