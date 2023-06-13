@@ -166,8 +166,13 @@ class redis_info(object):
                 break
             offset += 1
         coords = []
-        for i in range(l):
+        i = 0
+        #for i in range(l):
+        while True:
             timestamp = self.metadata[i+offset]['TimeStamp']
+            i = i + 1
+            if((timestamp - t - l) >= 1):
+                break
             t_dt = datetime.utcfromtimestamp(float(timestamp))
             t_astro = astropy.time.Time(t_dt)
             s = 'SDP_Beam%02d_RA'%(b)

@@ -34,7 +34,7 @@ for ch in range(4):
     wu.init_header(info, coord, ch)
     # recal the center_freq
     ch_center_freq = pywu.LO + pywu.FS/pywu.FFT_POINT*(ch + start_ch)
-    pywu.subband_desc['number'] = ch
+    pywu.subband_desc['number'] = ch + start_ch
     pywu.subband_desc['center'] = ch_center_freq
     pywu.subband_desc['base'] = ch_center_freq
     wu.set_data(d[ch])

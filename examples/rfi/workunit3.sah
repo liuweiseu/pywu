@@ -13,359 +13,359 @@
       </tape_info>
       <name>serendip6_m15_1.05G-1.45G_MB_03_00_20230613_080541_546953427_raw.0.0.34</name>
       <data_desc>
-        <start_ra>0.565422</start_ra>
-        <start_dec>39.156111</start_dec>
-        <end_ra>0.565397</end_ra>
-        <end_dec>39.175917</end_dec>
-        <true_angle_range>0.019806015778036323</true_angle_range>
+        <start_ra>0.565392</start_ra>
+        <start_dec>39.157472</start_dec>
+        <end_ra>0.565414</end_ra>
+        <end_dec>39.175889</end_dec>
+        <true_angle_range>0.01841701314002844</true_angle_range>
         <time_recorded>Tue Jun 13 08:05:41 2023</time_recorded>
         <time_recorded_jd>2460108.5039467593</time_recorded_jd>
         <nsamples>1048576</nsamples>
         <coords>
         <coordinate_t>
           <time>2460108.5039467593</time>
-          <ra>0.565422</ra>
-          <dec>39.156111</dec>
-        </coordinate_t>
-        <coordinate_t>
-          <time>2460108.503960648</time>
           <ra>0.565392</ra>
           <dec>39.157472</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.503972222</time>
+          <time>2460108.503960648</time>
           <ra>0.565394</ra>
           <dec>39.157194</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.503983796</time>
+          <time>2460108.503972222</time>
           <ra>0.565386</ra>
           <dec>39.15725</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5039953706</time>
+          <time>2460108.503983796</time>
           <ra>0.565422</ra>
           <dec>39.157639</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040069446</time>
+          <time>2460108.5039953706</time>
           <ra>0.565442</ra>
           <dec>39.157167</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040185186</time>
+          <time>2460108.5040069446</time>
           <ra>0.565464</ra>
           <dec>39.157389</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040300926</time>
+          <time>2460108.5040185186</time>
           <ra>0.565406</ra>
           <dec>39.158472</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040416666</time>
+          <time>2460108.5040300926</time>
           <ra>0.565358</ra>
           <dec>39.158611</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040555554</time>
+          <time>2460108.5040416666</time>
           <ra>0.565358</ra>
           <dec>39.158667</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5040671295</time>
+          <time>2460108.5040555554</time>
           <ra>0.565386</ra>
           <dec>39.157556</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504078704</time>
+          <time>2460108.5040671295</time>
           <ra>0.565336</ra>
           <dec>39.158139</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504090278</time>
+          <time>2460108.504078704</time>
           <ra>0.565394</ra>
           <dec>39.157972</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504101852</time>
+          <time>2460108.504090278</time>
           <ra>0.565411</ra>
           <dec>39.158889</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504113426</time>
+          <time>2460108.504101852</time>
           <ra>0.565394</ra>
           <dec>39.159861</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504125</time>
+          <time>2460108.504113426</time>
           <ra>0.565372</ra>
           <dec>39.160333</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504138889</time>
+          <time>2460108.504125</time>
           <ra>0.565361</ra>
           <dec>39.160583</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504150463</time>
+          <time>2460108.504138889</time>
           <ra>0.565378</ra>
           <dec>39.161139</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504162037</time>
+          <time>2460108.504150463</time>
           <ra>0.565414</ra>
           <dec>39.161194</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5041736113</time>
+          <time>2460108.504162037</time>
           <ra>0.565425</ra>
           <dec>39.161639</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5041851853</time>
+          <time>2460108.5041736113</time>
           <ra>0.565428</ra>
           <dec>39.160889</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5041967593</time>
+          <time>2460108.5041851853</time>
           <ra>0.565389</ra>
           <dec>39.161889</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504210648</time>
+          <time>2460108.5041967593</time>
           <ra>0.565369</ra>
           <dec>39.162056</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504222222</time>
+          <time>2460108.504210648</time>
           <ra>0.565331</ra>
           <dec>39.16225</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504233796</time>
+          <time>2460108.504222222</time>
           <ra>0.565303</ra>
           <dec>39.163556</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.50424537</time>
+          <time>2460108.504233796</time>
           <ra>0.565378</ra>
           <dec>39.163083</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5042569446</time>
+          <time>2460108.50424537</time>
           <ra>0.565453</ra>
           <dec>39.162806</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5042685186</time>
+          <time>2460108.5042569446</time>
           <ra>0.565456</ra>
           <dec>39.163611</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5042800927</time>
+          <time>2460108.5042685186</time>
           <ra>0.565408</ra>
           <dec>39.164806</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5042939815</time>
+          <time>2460108.5042800927</time>
           <ra>0.565364</ra>
           <dec>39.164056</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5043055555</time>
+          <time>2460108.5042939815</time>
           <ra>0.565328</ra>
           <dec>39.164278</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5043171295</time>
+          <time>2460108.5043055555</time>
           <ra>0.565339</ra>
           <dec>39.164222</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5043287035</time>
+          <time>2460108.5043171295</time>
           <ra>0.565356</ra>
           <dec>39.165</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504340278</time>
+          <time>2460108.5043287035</time>
           <ra>0.565392</ra>
           <dec>39.165139</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504351852</time>
+          <time>2460108.504340278</time>
           <ra>0.565389</ra>
           <dec>39.165056</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504363426</time>
+          <time>2460108.504351852</time>
           <ra>0.565392</ra>
           <dec>39.164639</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504375</time>
+          <time>2460108.504363426</time>
           <ra>0.565358</ra>
           <dec>39.165778</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504388889</time>
+          <time>2460108.504375</time>
           <ra>0.565344</ra>
           <dec>39.166722</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504400463</time>
+          <time>2460108.504388889</time>
           <ra>0.565392</ra>
           <dec>39.167333</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504412037</time>
+          <time>2460108.504400463</time>
           <ra>0.565403</ra>
           <dec>39.167528</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5044236113</time>
+          <time>2460108.504412037</time>
           <ra>0.565453</ra>
           <dec>39.166778</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5044351853</time>
+          <time>2460108.5044236113</time>
           <ra>0.565439</ra>
           <dec>39.167056</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5044467594</time>
+          <time>2460108.5044351853</time>
           <ra>0.565433</ra>
           <dec>39.167778</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5044583334</time>
+          <time>2460108.5044467594</time>
           <ra>0.565436</ra>
           <dec>39.168417</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504472222</time>
+          <time>2460108.5044583334</time>
           <ra>0.565397</ra>
           <dec>39.169389</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504483796</time>
+          <time>2460108.504472222</time>
           <ra>0.565389</ra>
           <dec>39.168889</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.50449537</time>
+          <time>2460108.504483796</time>
           <ra>0.565342</ra>
           <dec>39.168528</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504506944</time>
+          <time>2460108.50449537</time>
           <ra>0.565383</ra>
           <dec>39.168833</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045185187</time>
+          <time>2460108.504506944</time>
           <ra>0.565394</ra>
           <dec>39.16975</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045300927</time>
+          <time>2460108.5045185187</time>
           <ra>0.565378</ra>
           <dec>39.169972</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045416667</time>
+          <time>2460108.5045300927</time>
           <ra>0.565369</ra>
           <dec>39.169278</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045532407</time>
+          <time>2460108.5045416667</time>
           <ra>0.565336</ra>
           <dec>39.17025</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045671295</time>
+          <time>2460108.5045532407</time>
           <ra>0.565344</ra>
           <dec>39.170806</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045787035</time>
+          <time>2460108.5045671295</time>
           <ra>0.565372</ra>
           <dec>39.171</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5045902776</time>
+          <time>2460108.5045787035</time>
           <ra>0.565447</ra>
           <dec>39.170361</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504601852</time>
+          <time>2460108.5045902776</time>
           <ra>0.565422</ra>
           <dec>39.171139</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504613426</time>
+          <time>2460108.504601852</time>
           <ra>0.565417</ra>
           <dec>39.171472</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504627315</time>
+          <time>2460108.504613426</time>
           <ra>0.565406</ra>
           <dec>39.172444</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504638889</time>
+          <time>2460108.504627315</time>
           <ra>0.565381</ra>
           <dec>39.173028</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504650463</time>
+          <time>2460108.504638889</time>
           <ra>0.565358</ra>
           <dec>39.173528</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504662037</time>
+          <time>2460108.504650463</time>
           <ra>0.565364</ra>
           <dec>39.173194</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504673611</time>
+          <time>2460108.504662037</time>
           <ra>0.565386</ra>
           <dec>39.17325</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5046851854</time>
+          <time>2460108.504673611</time>
           <ra>0.565433</ra>
           <dec>39.174583</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5046967594</time>
+          <time>2460108.5046851854</time>
           <ra>0.565464</ra>
           <dec>39.174056</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504710648</time>
+          <time>2460108.5046967594</time>
           <ra>0.565469</ra>
           <dec>39.175111</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504722222</time>
+          <time>2460108.504710648</time>
           <ra>0.565439</ra>
           <dec>39.175667</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.504733796</time>
+          <time>2460108.504722222</time>
           <ra>0.56535</ra>
           <dec>39.174417</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5047453702</time>
+          <time>2460108.504733796</time>
           <ra>0.565339</ra>
           <dec>39.175444</dec>
         </coordinate_t>
         <coordinate_t>
-          <time>2460108.5047569443</time>
+          <time>2460108.5047453702</time>
           <ra>0.565397</ra>
           <dec>39.175917</dec>
+        </coordinate_t>
+        <coordinate_t>
+          <time>2460108.5047569443</time>
+          <ra>0.565414</ra>
+          <dec>39.175889</dec>
         </coordinate_t>
         </coords>
       </data_desc>
@@ -455,7 +455,7 @@
       <sb_id>0</sb_id>
     </group_info>
     <subband_desc>
-      <number>3</number>
+      <number>30586</number>
       <center>466706322.265625</center>
       <base>466706322.265625</base>
       <sample_rate>15258.7890625</sample_rate>
