@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # We recorded 4 channl of data for ~100s, and the channel numbers are 30583 ~ 30586.
-# The frequency range is  466.659545898438MHz to 466.705322265625MHz.
+# The frequency range is  1466.659545898438MHz to 1466.705322265625MHz.
 # Due to the RFI from Roach2 board(133.33MHz x 11 = 1466.663MHz), we should be able to see some RFI signals from the 4 channels of data.
 
 import pywu

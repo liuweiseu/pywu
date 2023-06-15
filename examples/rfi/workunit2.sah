@@ -456,8 +456,8 @@
     </group_info>
     <subband_desc>
       <number>30585</number>
-      <center>466691063.4765625</center>
-      <base>466691063.4765625</base>
+      <center>1466690063.4765625</center>
+      <base>1466690063.4765625</base>
       <sample_rate>15258.7890625</sample_rate>
     </subband_desc>
     <sb_id>0</sb_id>

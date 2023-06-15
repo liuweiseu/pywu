@@ -12,9 +12,9 @@ CHANNELS = 256
 # Bytes pe samples
 BYTES_PER_SAMPLE = 2
 # lo freq
-LO = 1000
+LO = 1000.0 * 10**6
 # ADC sampling freq
-FS = 1000 * 10**6
+FS = 1000.0 * 10**6
 # FFT points
 FFT_POINT = 65536
 # The data size we expected in one second
