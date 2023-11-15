@@ -180,7 +180,8 @@ analysis_cfg = {
     'credit_rate'                   : 2.8499999, \
     'autocorr_thresh'               : 17.8, \
     'autocorr_per_spectrum'         : 1, \
-    'autocorr_fftlen'               : 131072
+    'autocorr_fftlen'               : 131072, \
+    'autocorr_min_delay_bins'       : 10
 }
 
 """

@@ -451,6 +451,7 @@
         <autocorr_thresh>17.8</autocorr_thresh>
         <autocorr_per_spectrum>1</autocorr_per_spectrum>
         <autocorr_fftlen>131072</autocorr_fftlen>
+        <autocorr_min_delay_bins>10</autocorr_min_delay_bins>
       </analysis_cfg>
       <sb_id>0</sb_id>
     </group_info>
