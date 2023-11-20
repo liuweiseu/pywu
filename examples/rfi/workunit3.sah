@@ -418,7 +418,7 @@
         <pulse_min>16</pulse_min>
         <pulse_fft_max>8192</pulse_fft_max>
         <pulse_pot_length>256</pulse_pot_length>
-        <triplet_thresh>7.2444005</triplet_thresh>
+        <triplet_thresh>13.0</triplet_thresh>
         <triplet_max>131072</triplet_max>
         <triplet_min>16</triplet_min>
         <triplet_pot_length>256</triplet_pot_length>

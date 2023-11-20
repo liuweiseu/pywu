@@ -156,7 +156,7 @@ analysis_cfg = {
     'pulse_min'                     : 16,\
     'pulse_fft_max'                 : 8192,\
     'pulse_pot_length'              : 256,\
-    'triplet_thresh'                : 7.2444005,\
+    'triplet_thresh'                : 13.0,\
     'triplet_max'                   : 131072,\
     'triplet_min'                   : 16,\
     'triplet_pot_length'            : 256,\
