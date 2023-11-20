@@ -91,8 +91,8 @@ class wu_file(object):
         # subband_desc
         ch_center_freq = LO + FS/FFT_POINT*(ch + START_CH)
         wu_header['subband_desc']['number']          = ch + START_CH
-        wu_header['subband_desc']['center']          = ch_center_freq * 10**6
-        wu_header['subband_desc']['base']            = ch_center_freq * 10**6
+        wu_header['subband_desc']['center']          = ch_center_freq
+        wu_header['subband_desc']['base']            = ch_center_freq
         ### create wu_header
         for key in wu_header:
             for subkey in wu_header[key]:
