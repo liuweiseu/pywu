@@ -79,3 +79,6 @@ Sometimes, you may want to change metadata in workunit header, you can refer the
         <name>tape_info_test</name>
         ...
     ```
+* read a workunit file  
+There are two methods(`read_wu_header` and `read_wu_data`) in a python script(`examples/readwu.py`) for reading workunit files.  
+Please read the comments in that python script for more details.
