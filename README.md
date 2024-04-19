@@ -80,5 +80,5 @@ Sometimes, you may want to change metadata in workunit header, you can refer the
         ...
     ```
 * read a workunit file  
-There are two methods(`read_wu_header` and `read_wu_data`) in a python script(`examples/readwu.py`) for reading workunit files.  
+There are two methods(`read_wu_header` and `read_wu_data`) in a python script([examples/readwu.py](https://github.com/liuweiseu/pywu/blob/master/examples/readwu.py)) for reading workunit files.  
 Please read the comments in that python script for more details.
