@@ -15,6 +15,7 @@ If miniconda is installed, please create and activate the python environment.
 3. install numpy
     ```
     pip install numpy
+    pip install lxml
     ```
    **Note**: This is because numpy can't be installed automatically, even though it's in the install_requires list.
 4. install the package
