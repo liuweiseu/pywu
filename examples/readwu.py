@@ -18,6 +18,12 @@ def xml2dict(x):
                 d[x[i].tag] = float(x[i].text)
             except:
                 d[x[i].tag] = x[i].text
+        elif x[i].tag in d.keys():
+            # if the key is already in the dict, 
+            # convert it to list
+            if type(d[x[i].tag]) == dict:
+                d[x[i].tag]= [d[x[i].tag]]
+            d[x[i].tag].append(xml2dict(x[i]))
         else:
             d[x[i].tag] = xml2dict(x[i])
     return d
@@ -50,7 +56,7 @@ def read_wu_header(fn):
     r = ET.fromstring(hstr)
     # convert xml to dict
     wuh = {}
-    wuh[r[0].tag] = xml2dict(r)
+    wuh[r.tag] = xml2dict(r)
     return wuh
 
 def _get_data_info(infostr):
