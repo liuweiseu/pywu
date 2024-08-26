@@ -17,7 +17,7 @@
         <start_dec>39.157472</start_dec>
         <end_ra>0.565414</end_ra>
         <end_dec>39.175889</end_dec>
-        <true_angle_range>0.01841701314002844</true_angle_range>
+        <true_angle_range>0.018419956270305828</true_angle_range>
         <time_recorded>Tue Jun 13 08:05:41 2023</time_recorded>
         <time_recorded_jd>2460108.5039467593</time_recorded_jd>
         <nsamples>1048576</nsamples>
