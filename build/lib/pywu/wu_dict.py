@@ -150,13 +150,13 @@ analysis_cfg = {
     'gauss_power_thresh'            : 3,\
     'gauss_peak_power_thresh'       : 3.20000005,\
     'gauss_pot_length'              : 64,\
-    'pulse_thresh'                  : 18.2443752,\
+    'pulse_thresh'                  : 19.1000000,\
     'pulse_display_thresh'          : 0.5,\
     'pulse_max'                     : 40960,\
     'pulse_min'                     : 16,\
     'pulse_fft_max'                 : 8192,\
     'pulse_pot_length'              : 256,\
-    'triplet_thresh'                : 13.0,\
+    'triplet_thresh'                : 9.0,\
     'triplet_max'                   : 131072,\
     'triplet_min'                   : 16,\
     'triplet_pot_length'            : 256,\
@@ -171,17 +171,17 @@ analysis_cfg = {
     'chirps'                        : np.array([chirp_parameter, \
                                                 chirp_parameter_1]),
     'pulse_beams'                   : 1, \
-    'max_signals'                   : 30, \
-    'max_spikes'                    : 8, \
-    'max_gaussians'                 : 0, \
-    'max_pulses'                    : 0, \
-    'max_triplets'                  : 0, \
+    'max_signals'                   : 1048576, \
+    'max_spikes'                    : 1048576, \
+    'max_gaussians'                 : 1048576, \
+    'max_pulses'                    : 1048576, \
+    'max_triplets'                  : 1048576, \
     'keyuniq'                       : 7344400, \
     'credit_rate'                   : 2.8499999, \
-    'autocorr_thresh'               : 17.8, \
+    'autocorr_thresh'               : 19.75, \
     'autocorr_per_spectrum'         : 1, \
     'autocorr_fftlen'               : 131072, \
-    'autocorr_min_delay_bins'       : 10
+    'autocorr_min_delay_bins'       : 20
 }
 
 """

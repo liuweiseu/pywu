@@ -188,6 +188,32 @@ class xml_data(xml_coeff):
         """
         super(xml_data, self).__init__(info)
     
+    def print_xml_begin(self, tag):
+        """
+        Description:
+            It's an overloaded method for xml_coeff format.
+            The tag format is like:
+                <coeff length=2097152 encoding="setiathome">
+                    xxxx
+                <\coeff>
+        Input:
+            - tag(str): tag.
+                Default=None
+        """
+        self.print_xml_indent()
+        s = bytes("<%s"%(tag), ENCODING)
+        self.f.write(s)
+        for k in self.info:
+            if(k == 'class' or k == 'tag' or k == 'values'):
+                continue
+            v = self.info[k]
+            s = bytes(" %s=%s"%(k,v), ENCODING)
+            self.f.write(s)
+        # we don't want a newline character at the end for the data tag
+        # so we re-write this function for the xml_data, getting rid of the `\n`.
+        s = bytes(">", ENCODING)
+        self.f.write(s)
+
     def print_xml_content(self, c):
         """
         Description:
@@ -198,7 +224,6 @@ class xml_data(xml_coeff):
         if(not isinstance(c['values'], np.ndarray)):
             c['values'] = np.array(c['values'], dtype=np.int16)
         l = len(c['values'])
-        # TODO: double check if it's little endian or big endian here
         for v in c['values']:
             self.f.write(v)
         s = bytes('  \n', ENCODING)

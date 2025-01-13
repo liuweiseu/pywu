@@ -5,6 +5,7 @@
 # Due to the RFI from Roach2 board(133.33MHz x 11 = 1466.663MHz), we should be able to see some RFI signals from the 4 channels of data.
 
 import pywu
+import math
 
 # we will use the follwing 2 files
 dfile = "../../data_example/serendip6_m15_1.05G-1.45G_MB_03_00_20230613_080541_546953427_raw.dat"
@@ -20,11 +21,12 @@ beam = info['beam']
 # get metadata from redis_info.json
 r = pywu.io.redis_info(rfile)
 
+# set the number of samples to read
+nsamples = 1048576
 # seek coords from redis_info.json
-nsec = 69
+nsec = math.ceil(nsamples/(500*10**6/32768))
 coord = r.seekcoord(beam, t, nsec)
 # read data out
-nsamples = 1048576
 channels = 4
 d = f.dread(nsamples, channels=channels)
 # generate workunit for channel 0
