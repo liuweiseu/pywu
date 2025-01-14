@@ -173,6 +173,7 @@ analysis_cfg = {
     'pulse_beams'                   : 1, \
     'max_signals'                   : 1048576, \
     'max_spikes'                    : 1048576, \
+    'max_autocorr'                  : 1048576, \
     'max_gaussians'                 : 1048576, \
     'max_pulses'                    : 1048576, \
     'max_triplets'                  : 1048576, \

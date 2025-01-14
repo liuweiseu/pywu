@@ -224,7 +224,6 @@ class xml_data(xml_coeff):
         if(not isinstance(c['values'], np.ndarray)):
             c['values'] = np.array(c['values'], dtype=np.int16)
         l = len(c['values'])
-        # TODO: double check if it's little endian or big endian here
         for v in c['values']:
             self.f.write(v)
         s = bytes('  \n', ENCODING)

@@ -17,7 +17,7 @@ def package_files(package_dir, subdirectory):
 data_files = ['pywu']
 
 setup(name='pywu',
-    version = '0.0.4',
+    version = '0.0.5',
     description = 'Software for FAST reobs project',
     long_description = 'Software for FAST reobs project',
     license = 'GPL',
